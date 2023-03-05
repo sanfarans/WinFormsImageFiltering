@@ -17,5 +17,30 @@ namespace WInFormsImageFiltering
             InitializeComponent();
         }
 
+        private void loadImage(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png, *.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap image = new Bitmap(openFileDialog.FileName);
+                inputImage.Image = image;
+                outputImage.Image = image;
+            }
+
+        }
+
+        private void loadImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png, *.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap image = new Bitmap(openFileDialog.FileName);
+                inputImage.Image = image;
+                outputImage.Image = image;
+            }
+
+        }
     }
 }
