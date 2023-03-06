@@ -172,7 +172,7 @@ namespace WInFormsImageFiltering
         #endregion
 
         #region Convolution filters
-        private void applyConvolutionFilter(double[,] matrix, double divisor = 1.0)
+        private void applyConvolutionFilter(double[,] matrix, double divisor = 1)
         {
             if (outputBitmap == null)
                 return;
@@ -226,20 +226,72 @@ namespace WInFormsImageFiltering
             outputImage.Image = preview;
         }
 
-        #endregion
-
+        // Blur
         private void blurButton_Click(object sender, EventArgs e)
         {
             double[,] blurFilter = new double[5, 5] {
-                { 1.0, 1.0, 1.0, 1.0, 1.0},
-                { 1.0, 1.0, 1.0, 1.0, 1.0},
-                { 1.0, 1.0, 1.0, 1.0, 1.0},
-                { 1.0, 1.0, 1.0, 1.0, 1.0},
-                { 1.0, 1.0, 1.0, 1.0, 1.0}
+                { 1, 1, 1, 1, 1 },
+                { 1, 1, 1, 1, 1 },
+                { 1, 1, 1, 1, 1 },
+                { 1, 1, 1, 1, 1 },
+                { 1, 1, 1, 1, 1 }
             };
-            double divisor = 25.0;
+            double divisor = 25;
             applyConvolutionFilter(blurFilter, divisor);
             applyChanges();
         }
+
+        // Gaussian smoothing
+        private void gaussianSmoothingButton_Click(object sender, EventArgs e)
+        {
+            double[,] gaussianSmoothingFilter = new double[5, 5] {
+                { 0, 1, 2, 1, 0 },
+                { 1, 4, 8, 4, 1 },
+                { 2, 8, 16, 8, 2 },
+                { 1, 4, 8, 4, 1 },
+                { 0, 1, 2, 1, 0 }
+            };
+            double divisor = 80;
+            applyConvolutionFilter(gaussianSmoothingFilter, divisor);
+            applyChanges();
+        }
+    
+        // Sharpen
+        private void sharpenButton_Click(object sender, EventArgs e)
+        {
+            double[,] sharpenFilter = new double[3, 3] {
+                { -1, -1, -1 },
+                { -1, 9, -1 },
+                { -1, -1, -1 }
+            };
+            applyConvolutionFilter(sharpenFilter);
+            applyChanges();
+        }
+
+        // Edge detection
+        private void edgeDetectionButton_Click(object sender, EventArgs e)
+        {
+            double[,] edgeDetectionFilter = new double[3, 3] {
+                { -1, -1, -1 },
+                { -1, 8, -1 },
+                { -1, -1, -1 }
+            };
+            applyConvolutionFilter(edgeDetectionFilter);
+            applyChanges();
+        }
+
+        // Emboss
+        private void embossButton_Click(object sender, EventArgs e)
+        {
+            double[,] embossFilter = new double[3, 3] {
+                { -1, 0, 1 },
+                { -1, 1, 1 },
+                { -1, 0, 1 }
+            };
+            applyConvolutionFilter(embossFilter);
+            applyChanges();
+        }
+
+        #endregion
     }
 }

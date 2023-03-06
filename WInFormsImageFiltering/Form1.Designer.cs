@@ -36,6 +36,10 @@
             this.saveImageButton = new System.Windows.Forms.Button();
             this.loadImageButton = new System.Windows.Forms.Button();
             this.editingControlsTable = new System.Windows.Forms.TableLayoutPanel();
+            this.edgeDetectionButton = new System.Windows.Forms.Button();
+            this.sharpenButton = new System.Windows.Forms.Button();
+            this.gaussianSmoothingButton = new System.Windows.Forms.Button();
+            this.embossButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.gammaSlider = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,10 +53,10 @@
             this.contrastSlider = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.blurButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
-            this.blurButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputImage)).BeginInit();
@@ -161,6 +165,10 @@
             this.editingControlsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.editingControlsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.editingControlsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.editingControlsTable.Controls.Add(this.edgeDetectionButton, 0, 1);
+            this.editingControlsTable.Controls.Add(this.sharpenButton, 0, 1);
+            this.editingControlsTable.Controls.Add(this.gaussianSmoothingButton, 0, 1);
+            this.editingControlsTable.Controls.Add(this.embossButton, 0, 1);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel6, 3, 0);
             this.editingControlsTable.Controls.Add(this.inversionButton, 0, 0);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel4, 1, 0);
@@ -175,6 +183,50 @@
             this.editingControlsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.editingControlsTable.Size = new System.Drawing.Size(1176, 247);
             this.editingControlsTable.TabIndex = 1;
+            // 
+            // edgeDetectionButton
+            // 
+            this.edgeDetectionButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.edgeDetectionButton.Location = new System.Drawing.Point(708, 126);
+            this.edgeDetectionButton.Name = "edgeDetectionButton";
+            this.edgeDetectionButton.Size = new System.Drawing.Size(229, 118);
+            this.edgeDetectionButton.TabIndex = 9;
+            this.edgeDetectionButton.Text = "Edge detection";
+            this.edgeDetectionButton.UseVisualStyleBackColor = true;
+            this.edgeDetectionButton.Click += new System.EventHandler(this.edgeDetectionButton_Click);
+            // 
+            // sharpenButton
+            // 
+            this.sharpenButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sharpenButton.Location = new System.Drawing.Point(473, 126);
+            this.sharpenButton.Name = "sharpenButton";
+            this.sharpenButton.Size = new System.Drawing.Size(229, 118);
+            this.sharpenButton.TabIndex = 8;
+            this.sharpenButton.Text = "Sharpen";
+            this.sharpenButton.UseVisualStyleBackColor = true;
+            this.sharpenButton.Click += new System.EventHandler(this.sharpenButton_Click);
+            // 
+            // gaussianSmoothingButton
+            // 
+            this.gaussianSmoothingButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gaussianSmoothingButton.Location = new System.Drawing.Point(238, 126);
+            this.gaussianSmoothingButton.Name = "gaussianSmoothingButton";
+            this.gaussianSmoothingButton.Size = new System.Drawing.Size(229, 118);
+            this.gaussianSmoothingButton.TabIndex = 7;
+            this.gaussianSmoothingButton.Text = "Gaussian smoothing";
+            this.gaussianSmoothingButton.UseVisualStyleBackColor = true;
+            this.gaussianSmoothingButton.Click += new System.EventHandler(this.gaussianSmoothingButton_Click);
+            // 
+            // embossButton
+            // 
+            this.embossButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.embossButton.Location = new System.Drawing.Point(943, 126);
+            this.embossButton.Name = "embossButton";
+            this.embossButton.Size = new System.Drawing.Size(230, 118);
+            this.embossButton.TabIndex = 6;
+            this.embossButton.Text = "Emboss";
+            this.embossButton.UseVisualStyleBackColor = true;
+            this.embossButton.Click += new System.EventHandler(this.embossButton_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -332,6 +384,17 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.applyChangesButton_Click);
             // 
+            // blurButton
+            // 
+            this.blurButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blurButton.Location = new System.Drawing.Point(3, 126);
+            this.blurButton.Name = "blurButton";
+            this.blurButton.Size = new System.Drawing.Size(229, 118);
+            this.blurButton.TabIndex = 5;
+            this.blurButton.Text = "Blur";
+            this.blurButton.UseVisualStyleBackColor = true;
+            this.blurButton.Click += new System.EventHandler(this.blurButton_Click);
+            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
@@ -364,17 +427,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Brightness correction";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // blurButton
-            // 
-            this.blurButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blurButton.Location = new System.Drawing.Point(3, 126);
-            this.blurButton.Name = "blurButton";
-            this.blurButton.Size = new System.Drawing.Size(229, 118);
-            this.blurButton.TabIndex = 5;
-            this.blurButton.Text = "Blur";
-            this.blurButton.UseVisualStyleBackColor = true;
-            this.blurButton.Click += new System.EventHandler(this.blurButton_Click);
             // 
             // Form1
             // 
@@ -434,5 +486,9 @@
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button blurButton;
+        private System.Windows.Forms.Button edgeDetectionButton;
+        private System.Windows.Forms.Button sharpenButton;
+        private System.Windows.Forms.Button gaussianSmoothingButton;
+        private System.Windows.Forms.Button embossButton;
     }
 }
