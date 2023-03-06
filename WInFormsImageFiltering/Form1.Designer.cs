@@ -52,6 +52,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
+            this.blurButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputImage)).BeginInit();
@@ -164,6 +165,7 @@
             this.editingControlsTable.Controls.Add(this.inversionButton, 0, 0);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel3, 2, 0);
+            this.editingControlsTable.Controls.Add(this.blurButton, 0, 1);
             this.editingControlsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.editingControlsTable.Enabled = false;
             this.editingControlsTable.Location = new System.Drawing.Point(3, 503);
@@ -363,6 +365,17 @@
             this.label2.Text = "Brightness correction";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // blurButton
+            // 
+            this.blurButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blurButton.Location = new System.Drawing.Point(3, 126);
+            this.blurButton.Name = "blurButton";
+            this.blurButton.Size = new System.Drawing.Size(229, 118);
+            this.blurButton.TabIndex = 5;
+            this.blurButton.Text = "Blur";
+            this.blurButton.UseVisualStyleBackColor = true;
+            this.blurButton.Click += new System.EventHandler(this.blurButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -420,5 +433,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button blurButton;
     }
 }

@@ -40,23 +40,6 @@ namespace WInFormsImageFiltering
             editingControlsTable.Enabled = true;
         }
 
-        private void applyFunctionalFilter(Func<Color, Color> filter)
-        {
-            if (outputBitmap == null)
-                return;
-            {
-                for (int i = 0; i < outputBitmap.Width; i++)
-                {
-                    for (int j = 0; j < outputBitmap.Height; j++)
-                    {
-                        Color pixelColor = outputBitmap.GetPixel(i, j);
-                        Color newPixelColor = filter(pixelColor);
-                        preview.SetPixel(i, j, newPixelColor);
-                    }
-                }
-            }
-            outputImage.Image = preview;
-        }
 
 
         private void resetSliders(TrackBar? excepted = null)
@@ -78,6 +61,26 @@ namespace WInFormsImageFiltering
         private void applyChangesButton_Click(object sender, EventArgs e)
         {
             applyChanges();
+        }
+
+
+        #region Functional filters
+        private void applyFunctionalFilter(Func<Color, Color> filter)
+        {
+            if (outputBitmap == null)
+                return;
+            {
+                for (int i = 0; i < outputBitmap.Width; i++)
+                {
+                    for (int j = 0; j < outputBitmap.Height; j++)
+                    {
+                        Color pixelColor = outputBitmap.GetPixel(i, j);
+                        Color newPixelColor = filter(pixelColor);
+                        preview.SetPixel(i, j, newPixelColor);
+                    }
+                }
+            }
+            outputImage.Image = preview;
         }
 
         // Inversion
@@ -164,6 +167,79 @@ namespace WInFormsImageFiltering
             double value = (double)gammaSlider.Value / gammaSlider.Maximum * (maximum - minimum) + minimum;
             value = Math.Round(value / step) * step;
             applyFunctionalFilter((Color) => adjustGamma(Color, value));
+        }
+
+        #endregion
+
+        #region Convolution filters
+        private void applyConvolutionFilter(double[,] matrix, double divisor = 1.0)
+        {
+            if (outputBitmap == null)
+                return;
+
+            int matrixWidth = matrix.GetLength(0);
+            int matrixHeight = matrix.GetLength(1);
+            int halfWidth = matrixWidth / 2;
+            int halfHeight = matrixHeight / 2;
+
+            for (int x = 0; x < outputBitmap.Width; x++)
+            {
+                for (int y = 0; y < outputBitmap.Height; y++)
+                {
+                    double red = 0;
+                    double green = 0;
+                    double blue = 0;
+
+                    for (int i = 0; i < matrixWidth; i++)
+                    {
+                        int currentX = x + i - halfWidth;
+                        if (currentX < 0)
+                            currentX = 0;
+                        else if (currentX >= outputBitmap.Width)
+                            currentX = outputBitmap.Width - 1;
+
+                        for (int j = 0; j < matrixHeight; j++)
+                        {
+                            int currentY = y + j - halfHeight;
+                            if (currentY < 0)
+                                currentY = 0;
+                            else if (currentY >= outputBitmap.Height)
+                                currentY = outputBitmap.Height - 1;
+
+                            Color pixelColor = outputBitmap.GetPixel(currentX, currentY);
+
+                            double matrixValue = matrix[i, j];
+                            red += pixelColor.R * matrixValue;
+                            green += pixelColor.G * matrixValue;
+                            blue += pixelColor.B * matrixValue;
+                        }
+                    }
+
+                    red = Math.Clamp(red / divisor, 0, 255);
+                    green = Math.Clamp(green / divisor, 0, 255);
+                    blue = Math.Clamp(blue / divisor, 0, 255);
+
+                    Color newPixelColor = Color.FromArgb((byte)255, (byte)red, (byte)green, (byte)blue);
+                    preview.SetPixel(x, y, newPixelColor);
+                }
+            }
+            outputImage.Image = preview;
+        }
+
+        #endregion
+
+        private void blurButton_Click(object sender, EventArgs e)
+        {
+            double[,] blurFilter = new double[5, 5] {
+                { 1.0, 1.0, 1.0, 1.0, 1.0},
+                { 1.0, 1.0, 1.0, 1.0, 1.0},
+                { 1.0, 1.0, 1.0, 1.0, 1.0},
+                { 1.0, 1.0, 1.0, 1.0, 1.0},
+                { 1.0, 1.0, 1.0, 1.0, 1.0}
+            };
+            double divisor = 25.0;
+            applyConvolutionFilter(blurFilter, divisor);
+            applyChanges();
         }
     }
 }
