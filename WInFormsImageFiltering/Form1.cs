@@ -21,6 +21,9 @@ namespace WInFormsImageFiltering
         int contrastSliderDefault = 100;
         int gammaSliderDefault = 100;
 
+        private Timer delayTimer = new Timer();
+        private const int DELAY_INTERVAL = 500;
+
         public Form1()
         {
             InitializeComponent();
@@ -89,6 +92,7 @@ namespace WInFormsImageFiltering
         }
         private void applyChanges()
         {
+            delayTimer.Dispose();
             if (preview == null)
                 return;
             progressBar.Value = 0;
@@ -152,13 +156,23 @@ namespace WInFormsImageFiltering
             );
             return colorOut;
         }
-
+        private void OnDelayBrightnessTimerTick(object? sender, EventArgs e)
+        {
+            delayTimer.Dispose();
+            if (sender == null)
+                return;
+            applyFunctionalFilter((Color) => adjustBrightness(Color, brightnessSlider.Value));
+        }
         private void brightnessSlider_ValueChanged(object sender, EventArgs e)
         {
             if (brightnessSlider.Value == brightnessSliderDefault)
                 return;
             resetSliders(excepted: brightnessSlider);
-            applyFunctionalFilter((Color) => adjustBrightness(Color, brightnessSlider.Value));
+            delayTimer.Dispose();
+            delayTimer = new Timer();
+            delayTimer.Interval = DELAY_INTERVAL;
+            delayTimer.Tick += OnDelayBrightnessTimerTick;
+            delayTimer.Start();
         }
 
         // Contrast
@@ -172,17 +186,28 @@ namespace WInFormsImageFiltering
             );
             return colorOut;
         }
-        private void contrastSlider_ValueChanged(object sender, EventArgs e)
+        private void OnDelayContrastTimerTick(object? sender, EventArgs e)
         {
-            if (contrastSlider.Value == contrastSliderDefault)
+            delayTimer.Dispose();
+            if (sender == null)
                 return;
-            resetSliders(excepted: contrastSlider);
             double minimum = 0.2;
             double maximum = 1.8;
             double step = 0.1;
             double value = (double)contrastSlider.Value / contrastSlider.Maximum * (maximum - minimum) + minimum;
             value = Math.Round(value / step) * step;
             applyFunctionalFilter((Color) => adjustContrast(Color, value));
+        }
+        private void contrastSlider_ValueChanged(object sender, EventArgs e)
+        {
+            if (contrastSlider.Value == contrastSliderDefault)
+                return;
+            resetSliders(excepted: contrastSlider);
+            delayTimer.Dispose();
+            delayTimer = new Timer();
+            delayTimer.Interval = DELAY_INTERVAL;
+            delayTimer.Tick += OnDelayContrastTimerTick;
+            delayTimer.Start();
         }
 
         // Gamma
@@ -196,18 +221,30 @@ namespace WInFormsImageFiltering
             );
             return colorOut;
         }
-
-        private void gammaSlider_ValueChanged(object sender, EventArgs e)
+        private void OnDelayGammaTimerTick(object? sender, EventArgs e)
         {
-            if (gammaSlider.Value == gammaSliderDefault)
+            delayTimer.Dispose();
+            if (sender == null)
                 return;
-            resetSliders(excepted: gammaSlider);
             double minimum = 0.2;
             double maximum = 1.8;
             double step = 0.1;
             double value = (double)gammaSlider.Value / gammaSlider.Maximum * (maximum - minimum) + minimum;
             value = Math.Round(value / step) * step;
             applyFunctionalFilter((Color) => adjustGamma(Color, value));
+        }
+
+        private void gammaSlider_ValueChanged(object sender, EventArgs e)
+        {
+            if (gammaSlider.Value == gammaSliderDefault)
+                return;
+            resetSliders(excepted: gammaSlider);
+            delayTimer.Dispose();
+            delayTimer = new Timer();
+            delayTimer.Interval = DELAY_INTERVAL;
+            delayTimer.Tick -= null;
+            delayTimer.Tick += OnDelayGammaTimerTick;
+            delayTimer.Start();
         }
 
         #endregion
