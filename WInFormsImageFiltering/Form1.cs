@@ -16,6 +16,10 @@ namespace WInFormsImageFiltering
         Bitmap outputBitmap;
         Bitmap preview;
 
+        int brightnessSliderDefault = 0;
+        int contrastSliderDefault = 100;
+        int gammaSliderDefault = 100;
+
         public Form1()
         {
             InitializeComponent();
@@ -36,12 +40,6 @@ namespace WInFormsImageFiltering
             editingControlsTable.Enabled = true;
         }
 
-        private void inversionButton_Click(object sender, EventArgs e)
-        {
-            applyFunctionalFilter(invertColor);
-            applyChanges();
-        }
-
         private void applyFunctionalFilter(Func<Color, Color> filter)
         {
             if (outputBitmap == null)
@@ -60,6 +58,29 @@ namespace WInFormsImageFiltering
             outputImage.Image = preview;
         }
 
+
+        private void resetSliders(TrackBar? excepted = null)
+        {
+            if (excepted != brightnessSlider)
+                brightnessSlider.Value = brightnessSliderDefault;
+            if (excepted != contrastSlider)
+                contrastSlider.Value = contrastSliderDefault;
+            if (excepted != gammaSlider)
+                gammaSlider.Value = gammaSliderDefault;
+        }
+        private void applyChanges()
+        {
+            outputBitmap = (Bitmap)preview.Clone();
+            outputImage.Image = outputBitmap;
+            resetSliders();
+        }
+
+        private void applyChangesButton_Click(object sender, EventArgs e)
+        {
+            applyChanges();
+        }
+
+        // Inversion
         private Color invertColor(Color colorIn)
         {
             Color colorOut = Color.FromArgb(
@@ -70,7 +91,13 @@ namespace WInFormsImageFiltering
             );
             return colorOut;
         }
+        private void inversionButton_Click(object sender, EventArgs e)
+        {
+            applyFunctionalFilter(invertColor);
+            applyChanges();
+        }
 
+        // Brightness
         private Color adjustBrightness(Color colorIn, int brightness)
         {
             Color colorOut = Color.FromArgb(
@@ -84,23 +111,59 @@ namespace WInFormsImageFiltering
 
         private void brightnessSlider_ValueChanged(object sender, EventArgs e)
         {
+            if (brightnessSlider.Value == brightnessSliderDefault)
+                return;
+            resetSliders(excepted: brightnessSlider);
             applyFunctionalFilter((Color) => adjustBrightness(Color, brightnessSlider.Value));
         }
 
-        private void resetSliders()
+        // Contrast
+        private Color adjustContrast(Color colorIn, double contrast)
         {
-            brightnessSlider.Value = 0;
+            Color colorOut = Color.FromArgb(
+                colorIn.A,
+                (byte)Math.Clamp(128 + contrast * (colorIn.R - 128), 0, 255),
+                (byte)Math.Clamp(128 + contrast * (colorIn.G - 128), 0, 255),
+                (byte)Math.Clamp(128 + contrast * (colorIn.B - 128), 0, 255)
+            );
+            return colorOut;
         }
-        private void applyChanges()
+        private void contrastSlider_ValueChanged(object sender, EventArgs e)
         {
-            outputBitmap = (Bitmap)preview.Clone();
-            outputImage.Image = outputBitmap;
-            resetSliders();
+            if (contrastSlider.Value == contrastSliderDefault)
+                return;
+            resetSliders(excepted: contrastSlider);
+            double minimum = 0.2;
+            double maximum = 1.8;
+            double step = 0.1;
+            double value = (double)contrastSlider.Value / contrastSlider.Maximum * (maximum - minimum) + minimum;
+            value = Math.Round(value / step) * step;
+            applyFunctionalFilter((Color) => adjustContrast(Color, value));
         }
 
-        private void applyChangesButton_Click(object sender, EventArgs e)
+        // Gamma
+        private Color adjustGamma(Color colorIn, double gamma)
         {
-            applyChanges();
+            Color colorOut = Color.FromArgb(
+                colorIn.A,
+                (byte)Math.Clamp(Math.Pow(colorIn.R / 255.0, gamma) * 255.0, 0, 255),
+                (byte)Math.Clamp(Math.Pow(colorIn.G / 255.0, gamma) * 255.0, 0, 255),
+                (byte)Math.Clamp(Math.Pow(colorIn.B / 255.0, gamma) * 255.0, 0, 255)
+            );
+            return colorOut;
+        }
+
+        private void gammaSlider_ValueChanged(object sender, EventArgs e)
+        {
+            if (gammaSlider.Value == gammaSliderDefault)
+                return;
+            resetSliders(excepted: gammaSlider);
+            double minimum = 0.2;
+            double maximum = 1.8;
+            double step = 0.1;
+            double value = (double)gammaSlider.Value / gammaSlider.Maximum * (maximum - minimum) + minimum;
+            value = Math.Round(value / step) * step;
+            applyFunctionalFilter((Color) => adjustGamma(Color, value));
         }
     }
 }
