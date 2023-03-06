@@ -57,6 +57,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputImage)).BeginInit();
@@ -130,6 +131,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.progressBar);
             this.panel1.Controls.Add(this.saveImageButton);
             this.panel1.Controls.Add(this.loadImageButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -429,6 +431,13 @@
             this.label2.Text = "Brightness correction";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(13, 399);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(145, 29);
+            this.progressBar.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -491,5 +500,6 @@
         private System.Windows.Forms.Button sharpenButton;
         private System.Windows.Forms.Button gaussianSmoothingButton;
         private System.Windows.Forms.Button embossButton;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

@@ -91,6 +91,7 @@ namespace WInFormsImageFiltering
         {
             if (preview == null)
                 return;
+            progressBar.Value = 0;
             outputBitmap = (Bitmap)preview.Clone();
             outputImage.Image = outputBitmap;
             resetSliders();
@@ -107,17 +108,19 @@ namespace WInFormsImageFiltering
         {
             if (outputBitmap == null || preview == null)
                 return;
+            progressBar.Value = 0;
+            progressBar.Minimum = 0;
+            progressBar.Maximum = outputBitmap.Width;
+            for (int i = 0; i < outputBitmap.Width; i++)
             {
-                for (int i = 0; i < outputBitmap.Width; i++)
-                {
-                    for (int j = 0; j < outputBitmap.Height; j++)
-                    {
-                        Color pixelColor = outputBitmap.GetPixel(i, j);
-                        Color newPixelColor = filter(pixelColor);
-                        preview.SetPixel(i, j, newPixelColor);
-                    }
-                }
-            }
+                 for (int j = 0; j < outputBitmap.Height; j++)
+                 {
+                     Color pixelColor = outputBitmap.GetPixel(i, j);
+                     Color newPixelColor = filter(pixelColor);
+                     preview.SetPixel(i, j, newPixelColor);
+                 }
+                 progressBar.Value++;
+             }
             outputImage.Image = preview;
         }
 
@@ -220,6 +223,10 @@ namespace WInFormsImageFiltering
             int halfWidth = matrixWidth / 2;
             int halfHeight = matrixHeight / 2;
 
+            progressBar.Value = 0;
+            progressBar.Minimum = 0;
+            progressBar.Maximum = outputBitmap.Width;
+
             for (int x = 0; x < outputBitmap.Width; x++)
             {
                 for (int y = 0; y < outputBitmap.Height; y++)
@@ -260,6 +267,7 @@ namespace WInFormsImageFiltering
                     Color newPixelColor = Color.FromArgb((byte)255, (byte)red, (byte)green, (byte)blue);
                     preview.SetPixel(x, y, newPixelColor);
                 }
+                progressBar.Value++;
             }
             outputImage.Image = preview;
         }
