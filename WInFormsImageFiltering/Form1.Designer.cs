@@ -171,7 +171,7 @@
             this.saveImageButton.TabIndex = 1;
             this.saveImageButton.Text = "Save Image";
             this.saveImageButton.UseVisualStyleBackColor = true;
-            this.saveImageButton.Click += new System.EventHandler(this.saveImageButton_Click);
+            this.saveImageButton.Click += new System.EventHandler(this.SaveImageButton_Click);
             // 
             // loadImageButton
             // 
@@ -181,7 +181,7 @@
             this.loadImageButton.TabIndex = 0;
             this.loadImageButton.Text = "Load Image";
             this.loadImageButton.UseVisualStyleBackColor = true;
-            this.loadImageButton.Click += new System.EventHandler(this.loadImageButton_Click);
+            this.loadImageButton.Click += new System.EventHandler(this.LoadImageButton_Click);
             // 
             // editingControlsTable
             // 
@@ -219,7 +219,7 @@
             this.edgeDetectionButton.TabIndex = 9;
             this.edgeDetectionButton.Text = "Edge detection";
             this.edgeDetectionButton.UseVisualStyleBackColor = true;
-            this.edgeDetectionButton.Click += new System.EventHandler(this.edgeDetectionButton_Click);
+            this.edgeDetectionButton.Click += new System.EventHandler(this.EdgeDetectionButton_Click);
             // 
             // sharpenButton
             // 
@@ -230,7 +230,7 @@
             this.sharpenButton.TabIndex = 8;
             this.sharpenButton.Text = "Sharpen";
             this.sharpenButton.UseVisualStyleBackColor = true;
-            this.sharpenButton.Click += new System.EventHandler(this.sharpenButton_Click);
+            this.sharpenButton.Click += new System.EventHandler(this.SharpenButton_Click);
             // 
             // gaussianSmoothingButton
             // 
@@ -241,7 +241,7 @@
             this.gaussianSmoothingButton.TabIndex = 7;
             this.gaussianSmoothingButton.Text = "Gaussian smoothing";
             this.gaussianSmoothingButton.UseVisualStyleBackColor = true;
-            this.gaussianSmoothingButton.Click += new System.EventHandler(this.gaussianSmoothingButton_Click);
+            this.gaussianSmoothingButton.Click += new System.EventHandler(this.GaussianSmoothingButton_Click);
             // 
             // embossButton
             // 
@@ -252,7 +252,7 @@
             this.embossButton.TabIndex = 6;
             this.embossButton.Text = "Emboss";
             this.embossButton.UseVisualStyleBackColor = true;
-            this.embossButton.Click += new System.EventHandler(this.embossButton_Click);
+            this.embossButton.Click += new System.EventHandler(this.EmbossButton_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -278,7 +278,7 @@
             this.gammaSlider.Size = new System.Drawing.Size(223, 40);
             this.gammaSlider.TabIndex = 0;
             this.gammaSlider.Value = 100;
-            this.gammaSlider.ValueChanged += new System.EventHandler(this.gammaSlider_ValueChanged);
+            this.gammaSlider.ValueChanged += new System.EventHandler(this.GammaSlider_ValueChanged);
             // 
             // label3
             // 
@@ -300,7 +300,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Apply";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.applyChangesButton_Click);
+            this.button3.Click += new System.EventHandler(this.ApplyChangesButton_Click);
             // 
             // inversionButton
             // 
@@ -311,7 +311,7 @@
             this.inversionButton.TabIndex = 0;
             this.inversionButton.Text = "Inversion";
             this.inversionButton.UseVisualStyleBackColor = true;
-            this.inversionButton.Click += new System.EventHandler(this.inversionButton_Click);
+            this.inversionButton.Click += new System.EventHandler(this.InversionButton_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -337,7 +337,7 @@
             this.brightnessSlider.Name = "brightnessSlider";
             this.brightnessSlider.Size = new System.Drawing.Size(223, 40);
             this.brightnessSlider.TabIndex = 0;
-            this.brightnessSlider.ValueChanged += new System.EventHandler(this.brightnessSlider_ValueChanged);
+            this.brightnessSlider.ValueChanged += new System.EventHandler(this.BrightnessSlider_ValueChanged);
             // 
             // brightnessLabel
             // 
@@ -359,7 +359,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Apply";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.applyChangesButton_Click);
+            this.button1.Click += new System.EventHandler(this.ApplyChangesButton_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -386,7 +386,7 @@
             this.contrastSlider.Size = new System.Drawing.Size(223, 40);
             this.contrastSlider.TabIndex = 0;
             this.contrastSlider.Value = 100;
-            this.contrastSlider.ValueChanged += new System.EventHandler(this.contrastSlider_ValueChanged);
+            this.contrastSlider.ValueChanged += new System.EventHandler(this.ContrastSlider_ValueChanged);
             // 
             // label1
             // 
@@ -408,7 +408,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Apply";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.applyChangesButton_Click);
+            this.button2.Click += new System.EventHandler(this.ApplyChangesButton_Click);
             // 
             // blurButton
             // 
@@ -419,7 +419,7 @@
             this.blurButton.TabIndex = 5;
             this.blurButton.Text = "Blur";
             this.blurButton.UseVisualStyleBackColor = true;
-            this.blurButton.Click += new System.EventHandler(this.blurButton_Click);
+            this.blurButton.Click += new System.EventHandler(this.BlurButton_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -463,7 +463,7 @@
             this.undoButton.TabIndex = 4;
             this.undoButton.Text = "Undo";
             this.undoButton.UseVisualStyleBackColor = true;
-            this.undoButton.Click += new System.EventHandler(this.undoButton_Click);
+            this.undoButton.Click += new System.EventHandler(this.UndoButton_Click);
             // 
             // resetButton
             // 
@@ -474,7 +474,7 @@
             this.resetButton.TabIndex = 5;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // Form1
             // 

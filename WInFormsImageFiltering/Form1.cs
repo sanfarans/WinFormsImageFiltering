@@ -12,15 +12,15 @@ namespace WInFormsImageFiltering
 {
     public partial class Form1 : Form
     {
-        string? loadedFileName = null;
+        private string? loadedFileName = null;
 
-        Bitmap? outputBitmap;
-        Bitmap? preview;
-        Bitmap? previous;
+        private Bitmap? outputBitmap;
+        private Bitmap? preview;
+        private Bitmap? previous;
 
-        int brightnessSliderDefault = 0;
-        int contrastSliderDefault = 100;
-        int gammaSliderDefault = 100;
+        private const int BRIGHTNESS_SLIDER_DEFAULT = 0;
+        private const int CONTRAST_SLIDER_DEFAULT = 100;
+        private const int GAMMA_SLIDER_DEFAULT = 100;
 
         private Timer delayTimer = new Timer();
         private const int DELAY_INTERVAL = 500;
@@ -30,7 +30,7 @@ namespace WInFormsImageFiltering
             InitializeComponent();
         }
 
-        private void loadImageButton_Click(object sender, EventArgs e)
+        private void LoadImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png, *.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
@@ -48,7 +48,7 @@ namespace WInFormsImageFiltering
             editingControlsTable.Enabled = true;
         }
 
-        private void saveImageButton_Click(object sender, EventArgs e)
+        private void SaveImageButton_Click(object sender, EventArgs e)
         {
             if (loadedFileName == null)
                 return;
@@ -84,16 +84,16 @@ namespace WInFormsImageFiltering
         }
 
 
-        private void resetSliders(TrackBar? excepted = null)
+        private void ResetSliders(TrackBar? excepted = null)
         {
             if (excepted != brightnessSlider)
-                brightnessSlider.Value = brightnessSliderDefault;
+                brightnessSlider.Value = BRIGHTNESS_SLIDER_DEFAULT;
             if (excepted != contrastSlider)
-                contrastSlider.Value = contrastSliderDefault;
+                contrastSlider.Value = CONTRAST_SLIDER_DEFAULT;
             if (excepted != gammaSlider)
-                gammaSlider.Value = gammaSliderDefault;
+                gammaSlider.Value = GAMMA_SLIDER_DEFAULT;
         }
-        private void applyChanges()
+        private void ApplyChanges()
         {
             delayTimer.Dispose();
             if (preview == null)
@@ -106,14 +106,14 @@ namespace WInFormsImageFiltering
             outputBitmap = (Bitmap)preview.Clone();
             outputImage.Image = outputBitmap;
             undoButton.Enabled = true;
-            resetSliders();
+            ResetSliders();
         }
 
-        private void applyChangesButton_Click(object sender, EventArgs e)
+        private void ApplyChangesButton_Click(object sender, EventArgs e)
         {
-            applyChanges();
+            ApplyChanges();
         }
-        private void undoButton_Click(object sender, EventArgs e)
+        private void UndoButton_Click(object sender, EventArgs e)
         {
             if (previous != null)
             {
@@ -123,7 +123,7 @@ namespace WInFormsImageFiltering
             }
             undoButton.Enabled = false;
         }
-        private void resetButton_Click(object sender, EventArgs e)
+        private void ResetButton_Click(object sender, EventArgs e)
         {
             outputBitmap = (Bitmap)inputImage.Image.Clone();
             preview = (Bitmap)inputImage.Image.Clone();
@@ -132,7 +132,7 @@ namespace WInFormsImageFiltering
 
 
         #region Functional filters
-        private void applyFunctionalFilter(Func<Color, Color> filter)
+        private void ApplyFunctionalFilter(Func<Color, Color> filter)
         {
             if (outputBitmap == null || preview == null)
                 return;
@@ -153,7 +153,7 @@ namespace WInFormsImageFiltering
         }
 
         // Inversion
-        private Color invertColor(Color colorIn)
+        private Color InvertColor(Color colorIn)
         {
             Color colorOut = Color.FromArgb(
                 colorIn.A,
@@ -163,14 +163,14 @@ namespace WInFormsImageFiltering
             );
             return colorOut;
         }
-        private void inversionButton_Click(object sender, EventArgs e)
+        private void InversionButton_Click(object sender, EventArgs e)
         {
-            applyFunctionalFilter(invertColor);
-            applyChanges();
+            ApplyFunctionalFilter(InvertColor);
+            ApplyChanges();
         }
 
         // Brightness
-        private Color adjustBrightness(Color colorIn, int brightness)
+        private Color AdjustBrightness(Color colorIn, int brightness)
         {
             Color colorOut = Color.FromArgb(
                 colorIn.A,
@@ -185,13 +185,13 @@ namespace WInFormsImageFiltering
             delayTimer.Dispose();
             if (sender == null)
                 return;
-            applyFunctionalFilter((Color) => adjustBrightness(Color, brightnessSlider.Value));
+            ApplyFunctionalFilter((Color) => AdjustBrightness(Color, brightnessSlider.Value));
         }
-        private void brightnessSlider_ValueChanged(object sender, EventArgs e)
+        private void BrightnessSlider_ValueChanged(object sender, EventArgs e)
         {
-            if (brightnessSlider.Value == brightnessSliderDefault)
+            if (brightnessSlider.Value == BRIGHTNESS_SLIDER_DEFAULT)
                 return;
-            resetSliders(excepted: brightnessSlider);
+            ResetSliders(excepted: brightnessSlider);
             delayTimer.Dispose();
             delayTimer = new Timer();
             delayTimer.Interval = DELAY_INTERVAL;
@@ -200,7 +200,7 @@ namespace WInFormsImageFiltering
         }
 
         // Contrast
-        private Color adjustContrast(Color colorIn, double contrast)
+        private Color AdjustContrast(Color colorIn, double contrast)
         {
             Color colorOut = Color.FromArgb(
                 colorIn.A,
@@ -220,13 +220,13 @@ namespace WInFormsImageFiltering
             double step = 0.1;
             double value = (double)contrastSlider.Value / contrastSlider.Maximum * (maximum - minimum) + minimum;
             value = Math.Round(value / step) * step;
-            applyFunctionalFilter((Color) => adjustContrast(Color, value));
+            ApplyFunctionalFilter((Color) => AdjustContrast(Color, value));
         }
-        private void contrastSlider_ValueChanged(object sender, EventArgs e)
+        private void ContrastSlider_ValueChanged(object sender, EventArgs e)
         {
-            if (contrastSlider.Value == contrastSliderDefault)
+            if (contrastSlider.Value == CONTRAST_SLIDER_DEFAULT)
                 return;
-            resetSliders(excepted: contrastSlider);
+            ResetSliders(excepted: contrastSlider);
             delayTimer.Dispose();
             delayTimer = new Timer();
             delayTimer.Interval = DELAY_INTERVAL;
@@ -235,7 +235,7 @@ namespace WInFormsImageFiltering
         }
 
         // Gamma
-        private Color adjustGamma(Color colorIn, double gamma)
+        private Color AdjustGamma(Color colorIn, double gamma)
         {
             Color colorOut = Color.FromArgb(
                 colorIn.A,
@@ -255,14 +255,14 @@ namespace WInFormsImageFiltering
             double step = 0.1;
             double value = (double)gammaSlider.Value / gammaSlider.Maximum * (maximum - minimum) + minimum;
             value = Math.Round(value / step) * step;
-            applyFunctionalFilter((Color) => adjustGamma(Color, value));
+            ApplyFunctionalFilter((Color) => AdjustGamma(Color, value));
         }
 
-        private void gammaSlider_ValueChanged(object sender, EventArgs e)
+        private void GammaSlider_ValueChanged(object sender, EventArgs e)
         {
-            if (gammaSlider.Value == gammaSliderDefault)
+            if (gammaSlider.Value == GAMMA_SLIDER_DEFAULT)
                 return;
-            resetSliders(excepted: gammaSlider);
+            ResetSliders(excepted: gammaSlider);
             delayTimer.Dispose();
             delayTimer = new Timer();
             delayTimer.Interval = DELAY_INTERVAL;
@@ -274,7 +274,7 @@ namespace WInFormsImageFiltering
         #endregion
 
         #region Convolution filters
-        private void applyConvolutionFilter(double[,] matrix, double divisor = 1)
+        private void ApplyConvolutionFilter(double[,] matrix, double divisor = 1)
         {
             if (outputBitmap == null || preview == null)
                 return;
@@ -334,7 +334,7 @@ namespace WInFormsImageFiltering
         }
 
         // Blur
-        private void blurButton_Click(object sender, EventArgs e)
+        private void BlurButton_Click(object sender, EventArgs e)
         {
             double[,] blurFilter = new double[5, 5] {
                 { 1, 1, 1, 1, 1 },
@@ -344,12 +344,12 @@ namespace WInFormsImageFiltering
                 { 1, 1, 1, 1, 1 }
             };
             double divisor = 25;
-            applyConvolutionFilter(blurFilter, divisor);
-            applyChanges();
+            ApplyConvolutionFilter(blurFilter, divisor);
+            ApplyChanges();
         }
 
         // Gaussian smoothing
-        private void gaussianSmoothingButton_Click(object sender, EventArgs e)
+        private void GaussianSmoothingButton_Click(object sender, EventArgs e)
         {
             double[,] gaussianSmoothingFilter = new double[5, 5] {
                 { 0, 1, 2, 1, 0 },
@@ -359,44 +359,44 @@ namespace WInFormsImageFiltering
                 { 0, 1, 2, 1, 0 }
             };
             double divisor = 80;
-            applyConvolutionFilter(gaussianSmoothingFilter, divisor);
-            applyChanges();
+            ApplyConvolutionFilter(gaussianSmoothingFilter, divisor);
+            ApplyChanges();
         }
     
         // Sharpen
-        private void sharpenButton_Click(object sender, EventArgs e)
+        private void SharpenButton_Click(object sender, EventArgs e)
         {
             double[,] sharpenFilter = new double[3, 3] {
                 { -1, -1, -1 },
                 { -1, 9, -1 },
                 { -1, -1, -1 }
             };
-            applyConvolutionFilter(sharpenFilter);
-            applyChanges();
+            ApplyConvolutionFilter(sharpenFilter);
+            ApplyChanges();
         }
 
         // Edge detection
-        private void edgeDetectionButton_Click(object sender, EventArgs e)
+        private void EdgeDetectionButton_Click(object sender, EventArgs e)
         {
             double[,] edgeDetectionFilter = new double[3, 3] {
                 { -1, -1, -1 },
                 { -1, 8, -1 },
                 { -1, -1, -1 }
             };
-            applyConvolutionFilter(edgeDetectionFilter);
-            applyChanges();
+            ApplyConvolutionFilter(edgeDetectionFilter);
+            ApplyChanges();
         }
 
         // Emboss
-        private void embossButton_Click(object sender, EventArgs e)
+        private void EmbossButton_Click(object sender, EventArgs e)
         {
             double[,] embossFilter = new double[3, 3] {
                 { -1, 0, 1 },
                 { -1, 1, 1 },
                 { -1, 0, 1 }
             };
-            applyConvolutionFilter(embossFilter);
-            applyChanges();
+            ApplyConvolutionFilter(embossFilter);
+            ApplyChanges();
         }
 
         #endregion
