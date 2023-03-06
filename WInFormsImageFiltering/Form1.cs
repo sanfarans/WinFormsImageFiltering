@@ -16,6 +16,7 @@ namespace WInFormsImageFiltering
 
         Bitmap? outputBitmap;
         Bitmap? preview;
+        Bitmap? previous;
 
         int brightnessSliderDefault = 0;
         int contrastSliderDefault = 100;
@@ -41,6 +42,8 @@ namespace WInFormsImageFiltering
                 outputImage.Image = image;
                 outputBitmap = new Bitmap(loadedFileName);
                 preview = new Bitmap(loadedFileName);
+                resetButton.Enabled = true;
+                undoButton.Enabled = false;
             }
             editingControlsTable.Enabled = true;
         }
@@ -96,14 +99,35 @@ namespace WInFormsImageFiltering
             if (preview == null)
                 return;
             progressBar.Value = 0;
+            if (outputBitmap != null)
+                previous = (Bitmap)outputBitmap.Clone();
+            else
+                previous = (Bitmap)inputImage.Image.Clone();
             outputBitmap = (Bitmap)preview.Clone();
             outputImage.Image = outputBitmap;
+            undoButton.Enabled = true;
             resetSliders();
         }
 
         private void applyChangesButton_Click(object sender, EventArgs e)
         {
             applyChanges();
+        }
+        private void undoButton_Click(object sender, EventArgs e)
+        {
+            if (previous != null)
+            {
+                outputBitmap = (Bitmap)previous.Clone();
+                preview = (Bitmap)previous.Clone();
+                outputImage.Image = outputBitmap;
+            }
+            undoButton.Enabled = false;
+        }
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            outputBitmap = (Bitmap)inputImage.Image.Clone();
+            preview = (Bitmap)inputImage.Image.Clone();
+            outputImage.Image = outputBitmap;
         }
 
 
@@ -376,5 +400,7 @@ namespace WInFormsImageFiltering
         }
 
         #endregion
+
+
     }
 }

@@ -33,6 +33,7 @@
             this.inputImage = new System.Windows.Forms.PictureBox();
             this.outputImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.saveImageButton = new System.Windows.Forms.Button();
             this.loadImageButton = new System.Windows.Forms.Button();
@@ -58,7 +59,8 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.undoButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputImage)).BeginInit();
@@ -132,6 +134,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.resetButton);
+            this.panel1.Controls.Add(this.undoButton);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.progressBar);
             this.panel1.Controls.Add(this.saveImageButton);
@@ -141,6 +145,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(170, 488);
             this.panel1.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(47, 376);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "progress";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // progressBar
             // 
@@ -440,15 +454,27 @@
             this.label2.Text = "Brightness correction";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // undoButton
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 376);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "progress";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.undoButton.Enabled = false;
+            this.undoButton.Location = new System.Drawing.Point(13, 157);
+            this.undoButton.Name = "undoButton";
+            this.undoButton.Size = new System.Drawing.Size(145, 29);
+            this.undoButton.TabIndex = 4;
+            this.undoButton.Text = "Undo";
+            this.undoButton.UseVisualStyleBackColor = true;
+            this.undoButton.Click += new System.EventHandler(this.undoButton_Click);
+            // 
+            // resetButton
+            // 
+            this.resetButton.Enabled = false;
+            this.resetButton.Location = new System.Drawing.Point(13, 192);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(145, 29);
+            this.resetButton.TabIndex = 5;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // Form1
             // 
@@ -515,5 +541,7 @@
         private System.Windows.Forms.Button embossButton;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button undoButton;
+        private System.Windows.Forms.Button resetButton;
     }
 }
