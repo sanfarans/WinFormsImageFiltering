@@ -146,6 +146,7 @@
             this.saveImageButton.TabIndex = 1;
             this.saveImageButton.Text = "Save Image";
             this.saveImageButton.UseVisualStyleBackColor = true;
+            this.saveImageButton.Click += new System.EventHandler(this.saveImageButton_Click);
             // 
             // loadImageButton
             // 

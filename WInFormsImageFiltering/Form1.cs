@@ -12,9 +12,10 @@ namespace WInFormsImageFiltering
 {
     public partial class Form1 : Form
     {
+        string? loadedFileName = null;
 
-        Bitmap outputBitmap;
-        Bitmap preview;
+        Bitmap? outputBitmap;
+        Bitmap? preview;
 
         int brightnessSliderDefault = 0;
         int contrastSliderDefault = 100;
@@ -31,15 +32,50 @@ namespace WInFormsImageFiltering
             openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png, *.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Bitmap image = new Bitmap(openFileDialog.FileName);
+                loadedFileName = openFileDialog.FileName;
+                Bitmap image = new Bitmap(loadedFileName);
                 inputImage.Image = image;
                 outputImage.Image = image;
-                outputBitmap = new Bitmap(openFileDialog.FileName);
-                preview = new Bitmap(openFileDialog.FileName);
+                outputBitmap = new Bitmap(loadedFileName);
+                preview = new Bitmap(loadedFileName);
             }
             editingControlsTable.Enabled = true;
         }
 
+        private void saveImageButton_Click(object sender, EventArgs e)
+        {
+            if (loadedFileName == null)
+                return;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap Image|*.bmp";
+            sfd.Title = "Save an Image";
+
+            string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+            sfd.FileName = System.IO.Path.GetFileNameWithoutExtension(loadedFileName) + "_" + timestamp;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = sfd.FileName;
+                string ext = System.IO.Path.GetExtension(sfd.FileName).ToLower();
+                System.Drawing.Imaging.ImageFormat? format = null;
+                switch (ext)
+                {
+                    case ".jpg":
+                        format = System.Drawing.Imaging.ImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = System.Drawing.Imaging.ImageFormat.Bmp;
+                        break;
+                    case ".png":
+                        format = System.Drawing.Imaging.ImageFormat.Png;
+                        break;
+                    default:
+                        MessageBox.Show("Unsupported file format.");
+                        return;
+                }
+                outputImage.Image.Save(fileName, format);
+            }
+        }
 
 
         private void resetSliders(TrackBar? excepted = null)
@@ -53,6 +89,8 @@ namespace WInFormsImageFiltering
         }
         private void applyChanges()
         {
+            if (preview == null)
+                return;
             outputBitmap = (Bitmap)preview.Clone();
             outputImage.Image = outputBitmap;
             resetSliders();
@@ -67,7 +105,7 @@ namespace WInFormsImageFiltering
         #region Functional filters
         private void applyFunctionalFilter(Func<Color, Color> filter)
         {
-            if (outputBitmap == null)
+            if (outputBitmap == null || preview == null)
                 return;
             {
                 for (int i = 0; i < outputBitmap.Width; i++)
@@ -174,7 +212,7 @@ namespace WInFormsImageFiltering
         #region Convolution filters
         private void applyConvolutionFilter(double[,] matrix, double divisor = 1)
         {
-            if (outputBitmap == null)
+            if (outputBitmap == null || preview == null)
                 return;
 
             int matrixWidth = matrix.GetLength(0);
