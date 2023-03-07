@@ -60,6 +60,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.blurButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.filterInformationSaveButton = new System.Windows.Forms.Button();
             this.filterNameInput = new System.Windows.Forms.TextBox();
             this.filterInformationTable = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
@@ -494,6 +495,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.filterInformationSaveButton);
             this.panel2.Controls.Add(this.filterNameInput);
             this.panel2.Controls.Add(this.filterInformationTable);
             this.panel2.Controls.Add(this.label5);
@@ -503,6 +505,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(376, 747);
             this.panel2.TabIndex = 1;
+            // 
+            // filterInformationSaveButton
+            // 
+            this.filterInformationSaveButton.Location = new System.Drawing.Point(142, 646);
+            this.filterInformationSaveButton.Name = "filterInformationSaveButton";
+            this.filterInformationSaveButton.Size = new System.Drawing.Size(94, 29);
+            this.filterInformationSaveButton.TabIndex = 17;
+            this.filterInformationSaveButton.Text = "Save";
+            this.filterInformationSaveButton.UseVisualStyleBackColor = true;
+            this.filterInformationSaveButton.Click += new System.EventHandler(this.FilterInformationSaveButton_Click);
             // 
             // filterNameInput
             // 
@@ -714,6 +726,7 @@
             this.kernelColumnsInput.Name = "kernelColumnsInput";
             this.kernelColumnsInput.Size = new System.Drawing.Size(119, 27);
             this.kernelColumnsInput.TabIndex = 14;
+            this.kernelColumnsInput.TextChanged += new System.EventHandler(this.KernelDimensions_TextChanged);
             // 
             // tableLayoutPanel7
             // 
@@ -747,6 +760,7 @@
             this.kernelRowsInput.Name = "kernelRowsInput";
             this.kernelRowsInput.Size = new System.Drawing.Size(119, 27);
             this.kernelRowsInput.TabIndex = 14;
+            this.kernelRowsInput.TextChanged += new System.EventHandler(this.KernelDimensions_TextChanged);
             // 
             // label5
             // 
@@ -913,5 +927,6 @@
         private System.Windows.Forms.TextBox anchorXInput;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox filterNameInput;
+        private System.Windows.Forms.Button filterInformationSaveButton;
     }
 }

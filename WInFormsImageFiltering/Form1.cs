@@ -25,6 +25,9 @@ namespace WInFormsImageFiltering
         private Timer delayTimer = new Timer();
         private const int DELAY_INTERVAL = 500;
 
+        private ConvolutionFilter? selectedFilter;
+        private ConvolutionFilter[] customFilters = new ConvolutionFilter[50];
+
         public Form1()
         {
             InitializeComponent();
@@ -338,7 +341,7 @@ namespace WInFormsImageFiltering
 
                             Color pixelColor = outputBitmap.GetPixel(currentX, currentY);
 
-                            double kernelValue = kernel[i, j];
+                            double kernelValue = kernel[j, i];
                             red += pixelColor.R * kernelValue;
                             green += pixelColor.G * kernelValue;
                             blue += pixelColor.B * kernelValue;
@@ -359,6 +362,7 @@ namespace WInFormsImageFiltering
 
         private void DisplayConvolutionFilterInfo(ConvolutionFilter cf)
         {
+            selectedFilter = cf;
             double[,] kernel = cf.Kernel;
             int kernelHeight = kernel.GetLength(0);
             int kernelWidth = kernel.GetLength(1);
@@ -374,6 +378,84 @@ namespace WInFormsImageFiltering
             offsetInput.Text = cf.Offset.ToString();
             anchorXInput.Text = cf.Anchor.X.ToString();
             anchorYInput.Text = cf.Anchor.Y.ToString();
+        }
+
+        private void SaveConvolutionFilterInfo()
+        {
+            string name = filterNameInput.Text;
+            int kernelHeight = int.Parse(kernelRowsInput.Text);
+            int kernelWidth = int.Parse(kernelColumnsInput.Text);
+            double[,] kernel = new double[kernelHeight, kernelWidth];
+            double divisor = double.Parse(divisorInput.Text);
+            double offset = double.Parse(offsetInput.Text);
+            Point anchor = new Point(int.Parse(anchorXInput.Text), int.Parse(anchorYInput.Text));
+            for (int x = 0; x < kernelWidth; x++)
+                for (int y = 0; y < kernelHeight; y++)
+                {
+                    double value;
+                    try
+                    {
+                        value = (double)filterInformationMatrix.Rows[y].Cells[x].Value;
+                    }
+                    catch (Exception)
+                    {
+                        value = double.Parse((string)filterInformationMatrix.Rows[y].Cells[x].Value);
+                    }
+                    kernel[y, x] = value;
+                }
+            if (selectedFilter != null)
+            {
+                selectedFilter.Name = name;
+                selectedFilter.Kernel = kernel;
+                selectedFilter.Divisor = divisor;
+                selectedFilter.Offset = offset;
+                selectedFilter.Anchor = anchor;
+                return;
+            }
+            ConvolutionFilter filter = new ConvolutionFilter(
+                name: name,
+                kernel: kernel,
+                divisor: divisor,
+                offset: offset,
+                anchor: anchor
+            );
+            customFilters.Append(filter);
+        }
+        private void FilterInformationSaveButton_Click(object sender, EventArgs e)
+        {
+            SaveConvolutionFilterInfo();
+        }
+
+        private void KernelDimensions_TextChanged(object sender, EventArgs e)
+        {
+            if (kernelRowsInput.Text == "" || kernelColumnsInput.Text == "")
+                return;
+            int kernelHeight = int.Parse(kernelRowsInput.Text);
+            int kernelWidth = int.Parse(kernelColumnsInput.Text);
+            double[,] newKernel = new double[kernelHeight, kernelWidth];
+            if (selectedFilter == null)
+            {
+                for (int y = 0; y < kernelHeight; y++)
+                    for (int x = 0; x < kernelWidth; x++)
+                        newKernel[y, x] = 0;
+            }
+            else
+            {
+                for (int y = 0; y < kernelHeight; y++)
+                    for (int x = 0; x < kernelWidth; x++)
+                    {
+                        if (y < selectedFilter.Kernel.GetLength(0) && x < selectedFilter.Kernel.GetLength(1))
+                            newKernel[y, x] = selectedFilter.Kernel[y, x];
+                        else
+                            newKernel[y, x] = 0;
+                    }
+            }
+            filterInformationMatrix.RowCount = kernelHeight;
+            filterInformationMatrix.ColumnCount = kernelWidth;
+            for (int x = 0; x < kernelWidth; x++)
+                for (int y = 0; y < kernelHeight; y++)
+                    filterInformationMatrix.Rows[y].Cells[x].Value = newKernel[y, x];
+
         }
 
 
@@ -465,6 +547,5 @@ namespace WInFormsImageFiltering
         }
 
         #endregion
-
     }
 }
