@@ -48,6 +48,7 @@ namespace WInFormsImageFiltering
                 undoButton.Enabled = false;
             }
             editingControlsTable.Enabled = true;
+            customFilters.Enabled = true;
         }
 
         private void SaveImageButton_Click(object sender, EventArgs e)
@@ -302,7 +303,6 @@ namespace WInFormsImageFiltering
         }
         private void UseConvolutionFilter(ConvolutionFilter cf)
         {
-            DisplayConvolutionFilterInfo(cf);
             ApplyConvolutionFilter(cf);
             ApplyChanges();
         }
@@ -399,7 +399,7 @@ namespace WInFormsImageFiltering
                 anchorYInput.Text = "";
             }
         }
-        private void autocomputeDivisorButton_Click(object sender, EventArgs e)
+        private void AutocomputeDivisorButton_Click(object sender, EventArgs e)
         {
             if (kernelRowsInput.Text == "" || kernelColumnsInput.Text == "")
                 return;
@@ -462,11 +462,28 @@ namespace WInFormsImageFiltering
                 offset: offset,
                 anchor: anchor
             );
+            TableLayoutPanel filterLayout = new TableLayoutPanel();
+            filterLayout.RowCount = 2;
+            filterLayout.ColumnCount = 2;
+            filterLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            filterLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            Label filterLabel = new Label();
+            filterLabel.Text = filter.Name;
+            filterLabel.Dock = DockStyle.Fill;
+            filterLabel.TextAlign = ContentAlignment.MiddleCenter;
             Button filterButton = new Button();
-            filterButton.AutoSize = true;
-            filterButton.Text = filter.Name;
+            filterButton.Dock = DockStyle.Fill;
+            filterButton.Text = "Apply";
             filterButton.Click += (sender, e) => UseConvolutionFilter(filter);
-            customFilters.Controls.Add(filterButton);
+            Button inspectFilterButton = new Button();
+            inspectFilterButton.Dock = DockStyle.Fill;
+            inspectFilterButton.Text = "Inspect";
+            inspectFilterButton.Click += (sender, e) => DisplayConvolutionFilterInfo(filter);
+            filterLayout.Controls.Add(filterLabel);
+            filterLayout.SetColumnSpan(filterLabel, 2);
+            filterLayout.Controls.Add(filterButton);
+            filterLayout.Controls.Add(inspectFilterButton);
+            customFilters.Controls.Add(filterLayout);
         }
         private void FilterInformationSaveButton_Click(object sender, EventArgs e)
         {
@@ -591,5 +608,29 @@ namespace WInFormsImageFiltering
 
         #endregion
 
+        private void inspectBlurButton_Click(object sender, EventArgs e)
+        {
+            DisplayConvolutionFilterInfo(blurFilter);
+        }
+
+        private void inspectGaussianSmoothingButton_Click(object sender, EventArgs e)
+        {
+            DisplayConvolutionFilterInfo(gaussianSmoothingFilter);
+        }
+
+        private void inspectSharpenButton_Click(object sender, EventArgs e)
+        {
+            DisplayConvolutionFilterInfo(sharpenFilter);
+        }
+
+        private void inspectEdgeDetectionButton_Click(object sender, EventArgs e)
+        {
+            DisplayConvolutionFilterInfo(edgeDetectionFilter);
+        }
+
+        private void inspectEmbossButton_Click(object sender, EventArgs e)
+        {
+            DisplayConvolutionFilterInfo(embossFilter);
+        }
     }
 }
