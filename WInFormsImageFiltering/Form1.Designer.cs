@@ -113,6 +113,7 @@
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
+            this.bidirectionalEdgeDetectionButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -308,6 +309,7 @@
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel3, 2, 0);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel12, 0, 1);
+            this.editingControlsTable.Controls.Add(this.bidirectionalEdgeDetectionButton, 4, 0);
             this.editingControlsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.editingControlsTable.Enabled = false;
             this.editingControlsTable.Location = new System.Drawing.Point(3, 503);
@@ -1181,6 +1183,17 @@
             this.button13.Text = "Inspect";
             this.button13.UseVisualStyleBackColor = true;
             // 
+            // bidirectionalEdgeDetectionButton
+            // 
+            this.bidirectionalEdgeDetectionButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bidirectionalEdgeDetectionButton.Location = new System.Drawing.Point(951, 3);
+            this.bidirectionalEdgeDetectionButton.Name = "bidirectionalEdgeDetectionButton";
+            this.bidirectionalEdgeDetectionButton.Size = new System.Drawing.Size(234, 125);
+            this.bidirectionalEdgeDetectionButton.TabIndex = 16;
+            this.bidirectionalEdgeDetectionButton.Text = "Bidirectional edge detection";
+            this.bidirectionalEdgeDetectionButton.UseVisualStyleBackColor = true;
+            this.bidirectionalEdgeDetectionButton.Click += new System.EventHandler(this.bidirectionalEdgeDetectionButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1330,5 +1343,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button bidirectionalEdgeDetectionButton;
     }
 }

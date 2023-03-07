@@ -635,9 +635,108 @@ namespace WInFormsImageFiltering
         {
             DisplayConvolutionFilterInfo(embossFilter);
         }
-
         #endregion
 
+        // Lab task
 
+        private const int EDGE_DETECTION_THRESHOLD = 50;
+        private void ApplyBiderectionalEdgeDetection()
+        {
+            if (outputBitmap == null || preview == null)
+                return;
+
+            double[,] verticalEdgeDetectionKernel = new double[3, 3]
+            {
+                { 0, -1, 0 },
+                { 0, 1, 0 },
+                { 0, 0, 0 }
+            };
+
+            double[,] horizontalEdgeDetectionKernel = new double[3, 3]
+            {
+                { 0, 0, 0 },
+                { -1, 1, 0 },
+                { 0, 0, 0 }
+            };
+
+            int kernelHeight = 3;
+            int kernelWidth = 3;
+            Point anchor = new Point(kernelHeight, kernelWidth);
+            double divisor = 1;
+            double offset = 0;
+
+            progressBar.Value = 0;
+            progressBar.Minimum = 0;
+            progressBar.Maximum = outputBitmap.Width;
+
+            for (int x = 0; x < outputBitmap.Width; x++)
+            {
+                for (int y = 0; y < outputBitmap.Height; y++)
+                {
+                    double red1 = 0;
+                    double green1 = 0;
+                    double blue1 = 0;
+
+                    double red2 = 0;
+                    double green2 = 0;
+                    double blue2 = 0;
+
+                    for (int i = 0; i < kernelWidth; i++)
+                    {
+                        int currentX = x + i - anchor.X;
+                        if (currentX < 0)
+                            currentX = 0;
+                        else if (currentX >= outputBitmap.Width)
+                            currentX = outputBitmap.Width - 1;
+
+                        for (int j = 0; j < kernelHeight; j++)
+                        {
+                            int currentY = y + j - anchor.Y;
+                            if (currentY < 0)
+                                currentY = 0;
+                            else if (currentY >= outputBitmap.Height)
+                                currentY = outputBitmap.Height - 1;
+
+                            Color pixelColor = outputBitmap.GetPixel(currentX, currentY);
+
+                            double verticalKernelValue = verticalEdgeDetectionKernel[j, i];
+                            double horizontalKernelValue = horizontalEdgeDetectionKernel[j, i];
+
+                            red1 += pixelColor.R * verticalKernelValue;
+                            green1 += pixelColor.G * verticalKernelValue;
+                            blue1 += pixelColor.B * verticalKernelValue;
+
+                            red2 += pixelColor.R * horizontalKernelValue;
+                            green2 += pixelColor.G * horizontalKernelValue;
+                            blue2 += pixelColor.B * horizontalKernelValue;
+                        }
+                    }
+
+                    red1 = Math.Clamp(Math.Abs(offset + red1 / divisor), 0, 255);
+                    green1 = Math.Clamp(Math.Abs(offset + green1 / divisor), 0, 255);
+                    blue1 = Math.Clamp(Math.Abs(offset + blue1 / divisor), 0, 255);
+
+                    red2 = Math.Clamp(Math.Abs(offset + red2 / divisor), 0, 255);
+                    green2 = Math.Clamp(Math.Abs(offset + green2 / divisor), 0, 255);
+                    blue2 = Math.Clamp(Math.Abs(offset + blue2 / divisor), 0, 255);
+
+                    double[] values = new double[6]
+                    {
+                        red1, green1, blue1, red2, green2, blue2
+                    };
+                    if (values.Max() > EDGE_DETECTION_THRESHOLD)
+                        preview.SetPixel(x, y, Color.White);
+                    else
+                        preview.SetPixel(x, y, Color.Black);
+                }
+                progressBar.Value++;
+            }
+            ApplyChanges();
+        }
+
+        private void bidirectionalEdgeDetectionButton_Click(object sender, EventArgs e)
+        {
+            ApplyBiderectionalEdgeDetection();
+        }
     }
 }
