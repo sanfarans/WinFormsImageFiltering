@@ -59,6 +59,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.blurButton = new System.Windows.Forms.Button();
+            this.customFilters = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.filterInformationSaveButton = new System.Windows.Forms.Button();
             this.filterNameInput = new System.Windows.Forms.TextBox();
@@ -87,6 +88,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
+            this.filterInformationNewButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -124,7 +126,7 @@
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 1;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(1582, 753);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(1582, 953);
             this.mainTableLayoutPanel.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -133,13 +135,15 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.editingControlsTable, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.customFilters, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1194, 747);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1194, 947);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -279,15 +283,15 @@
             this.editingControlsTable.RowCount = 2;
             this.editingControlsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.editingControlsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.editingControlsTable.Size = new System.Drawing.Size(1188, 241);
+            this.editingControlsTable.Size = new System.Drawing.Size(1188, 262);
             this.editingControlsTable.TabIndex = 1;
             // 
             // edgeDetectionButton
             // 
             this.edgeDetectionButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.edgeDetectionButton.Location = new System.Drawing.Point(714, 123);
+            this.edgeDetectionButton.Location = new System.Drawing.Point(714, 134);
             this.edgeDetectionButton.Name = "edgeDetectionButton";
-            this.edgeDetectionButton.Size = new System.Drawing.Size(231, 115);
+            this.edgeDetectionButton.Size = new System.Drawing.Size(231, 125);
             this.edgeDetectionButton.TabIndex = 9;
             this.edgeDetectionButton.Text = "Edge detection";
             this.edgeDetectionButton.UseVisualStyleBackColor = true;
@@ -296,9 +300,9 @@
             // sharpenButton
             // 
             this.sharpenButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sharpenButton.Location = new System.Drawing.Point(477, 123);
+            this.sharpenButton.Location = new System.Drawing.Point(477, 134);
             this.sharpenButton.Name = "sharpenButton";
-            this.sharpenButton.Size = new System.Drawing.Size(231, 115);
+            this.sharpenButton.Size = new System.Drawing.Size(231, 125);
             this.sharpenButton.TabIndex = 8;
             this.sharpenButton.Text = "Sharpen";
             this.sharpenButton.UseVisualStyleBackColor = true;
@@ -307,9 +311,9 @@
             // gaussianSmoothingButton
             // 
             this.gaussianSmoothingButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gaussianSmoothingButton.Location = new System.Drawing.Point(240, 123);
+            this.gaussianSmoothingButton.Location = new System.Drawing.Point(240, 134);
             this.gaussianSmoothingButton.Name = "gaussianSmoothingButton";
-            this.gaussianSmoothingButton.Size = new System.Drawing.Size(231, 115);
+            this.gaussianSmoothingButton.Size = new System.Drawing.Size(231, 125);
             this.gaussianSmoothingButton.TabIndex = 7;
             this.gaussianSmoothingButton.Text = "Gaussian smoothing";
             this.gaussianSmoothingButton.UseVisualStyleBackColor = true;
@@ -318,9 +322,9 @@
             // embossButton
             // 
             this.embossButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.embossButton.Location = new System.Drawing.Point(951, 123);
+            this.embossButton.Location = new System.Drawing.Point(951, 134);
             this.embossButton.Name = "embossButton";
-            this.embossButton.Size = new System.Drawing.Size(234, 115);
+            this.embossButton.Size = new System.Drawing.Size(234, 125);
             this.embossButton.TabIndex = 6;
             this.embossButton.Text = "Emboss";
             this.embossButton.UseVisualStyleBackColor = true;
@@ -379,7 +383,7 @@
             this.inversionButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inversionButton.Location = new System.Drawing.Point(3, 3);
             this.inversionButton.Name = "inversionButton";
-            this.inversionButton.Size = new System.Drawing.Size(231, 114);
+            this.inversionButton.Size = new System.Drawing.Size(231, 125);
             this.inversionButton.TabIndex = 0;
             this.inversionButton.Text = "Inversion";
             this.inversionButton.UseVisualStyleBackColor = true;
@@ -485,16 +489,25 @@
             // blurButton
             // 
             this.blurButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blurButton.Location = new System.Drawing.Point(3, 123);
+            this.blurButton.Location = new System.Drawing.Point(3, 134);
             this.blurButton.Name = "blurButton";
-            this.blurButton.Size = new System.Drawing.Size(231, 115);
+            this.blurButton.Size = new System.Drawing.Size(231, 125);
             this.blurButton.TabIndex = 5;
             this.blurButton.Text = "Blur";
             this.blurButton.UseVisualStyleBackColor = true;
             this.blurButton.Click += new System.EventHandler(this.BlurButton_Click);
             // 
+            // customFilters
+            // 
+            this.customFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customFilters.Location = new System.Drawing.Point(3, 771);
+            this.customFilters.Name = "customFilters";
+            this.customFilters.Size = new System.Drawing.Size(1188, 173);
+            this.customFilters.TabIndex = 2;
+            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.filterInformationNewButton);
             this.panel2.Controls.Add(this.filterInformationSaveButton);
             this.panel2.Controls.Add(this.filterNameInput);
             this.panel2.Controls.Add(this.filterInformationTable);
@@ -503,12 +516,12 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(1203, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(376, 747);
+            this.panel2.Size = new System.Drawing.Size(376, 947);
             this.panel2.TabIndex = 1;
             // 
             // filterInformationSaveButton
             // 
-            this.filterInformationSaveButton.Location = new System.Drawing.Point(142, 646);
+            this.filterInformationSaveButton.Location = new System.Drawing.Point(142, 747);
             this.filterInformationSaveButton.Name = "filterInformationSaveButton";
             this.filterInformationSaveButton.Size = new System.Drawing.Size(94, 29);
             this.filterInformationSaveButton.TabIndex = 17;
@@ -534,7 +547,7 @@
             this.filterInformationTable.Controls.Add(this.tableLayoutPanel9, 0, 2);
             this.filterInformationTable.Controls.Add(this.tableLayoutPanel8, 0, 1);
             this.filterInformationTable.Controls.Add(this.tableLayoutPanel7, 0, 0);
-            this.filterInformationTable.Location = new System.Drawing.Point(67, 370);
+            this.filterInformationTable.Location = new System.Drawing.Point(67, 471);
             this.filterInformationTable.Name = "filterInformationTable";
             this.filterInformationTable.RowCount = 5;
             this.filterInformationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -782,7 +795,7 @@
             this.filterInformationMatrix.RowHeadersVisible = false;
             this.filterInformationMatrix.RowHeadersWidth = 51;
             this.filterInformationMatrix.RowTemplate.Height = 29;
-            this.filterInformationMatrix.Size = new System.Drawing.Size(300, 163);
+            this.filterInformationMatrix.Size = new System.Drawing.Size(300, 275);
             this.filterInformationMatrix.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -818,14 +831,24 @@
             this.label2.Text = "Brightness correction";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // filterInformationNewButton
+            // 
+            this.filterInformationNewButton.Location = new System.Drawing.Point(142, 796);
+            this.filterInformationNewButton.Name = "filterInformationNewButton";
+            this.filterInformationNewButton.Size = new System.Drawing.Size(94, 29);
+            this.filterInformationNewButton.TabIndex = 18;
+            this.filterInformationNewButton.Text = "New";
+            this.filterInformationNewButton.UseVisualStyleBackColor = true;
+            this.filterInformationNewButton.Click += new System.EventHandler(this.filterInformationNewButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1582, 753);
+            this.ClientSize = new System.Drawing.Size(1582, 953);
             this.Controls.Add(this.mainTableLayoutPanel);
-            this.MaximumSize = new System.Drawing.Size(1600, 800);
-            this.MinimumSize = new System.Drawing.Size(1600, 800);
+            this.MaximumSize = new System.Drawing.Size(1600, 1000);
+            this.MinimumSize = new System.Drawing.Size(1600, 1000);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -928,5 +951,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox filterNameInput;
         private System.Windows.Forms.Button filterInformationSaveButton;
+        private System.Windows.Forms.FlowLayoutPanel customFilters;
+        private System.Windows.Forms.Button filterInformationNewButton;
     }
 }

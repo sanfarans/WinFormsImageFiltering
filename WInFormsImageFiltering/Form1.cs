@@ -26,7 +26,6 @@ namespace WInFormsImageFiltering
         private const int DELAY_INTERVAL = 500;
 
         private ConvolutionFilter? selectedFilter;
-        private ConvolutionFilter[] customFilters = new ConvolutionFilter[50];
 
         public Form1()
         {
@@ -301,6 +300,12 @@ namespace WInFormsImageFiltering
                 }
             }
         }
+        private void UseConvolutionFilter(ConvolutionFilter cf)
+        {
+            DisplayConvolutionFilterInfo(cf);
+            ApplyConvolutionFilter(cf);
+            ApplyChanges();
+        }
         private void ApplyConvolutionFilter(ConvolutionFilter cf)
         {
             if (outputBitmap == null || preview == null)
@@ -360,24 +365,39 @@ namespace WInFormsImageFiltering
             outputImage.Image = preview;
         }
 
-        private void DisplayConvolutionFilterInfo(ConvolutionFilter cf)
+        private void DisplayConvolutionFilterInfo(ConvolutionFilter? cf)
         {
-            selectedFilter = cf;
-            double[,] kernel = cf.Kernel;
-            int kernelHeight = kernel.GetLength(0);
-            int kernelWidth = kernel.GetLength(1);
-            filterInformationMatrix.RowCount = kernelHeight;
-            filterInformationMatrix.ColumnCount = kernelWidth;
-            for (int x = 0; x < kernelWidth; x++)
-                for (int y = 0; y < kernelHeight; y++)
-                    filterInformationMatrix.Rows[y].Cells[x].Value = kernel[y, x];
-            filterNameInput.Text = cf.Name;
-            kernelRowsInput.Text = kernelHeight.ToString();
-            kernelColumnsInput.Text = kernelWidth.ToString();
-            divisorInput.Text = cf.Divisor.ToString();
-            offsetInput.Text = cf.Offset.ToString();
-            anchorXInput.Text = cf.Anchor.X.ToString();
-            anchorYInput.Text = cf.Anchor.Y.ToString();
+            if (cf != null)
+            {
+                selectedFilter = cf;
+                double[,] kernel = cf.Kernel;
+                int kernelHeight = kernel.GetLength(0);
+                int kernelWidth = kernel.GetLength(1);
+                filterInformationMatrix.RowCount = kernelHeight;
+                filterInformationMatrix.ColumnCount = kernelWidth;
+                for (int x = 0; x < kernelWidth; x++)
+                    for (int y = 0; y < kernelHeight; y++)
+                        filterInformationMatrix.Rows[y].Cells[x].Value = kernel[y, x];
+                filterNameInput.Text = cf.Name;
+                kernelRowsInput.Text = kernelHeight.ToString();
+                kernelColumnsInput.Text = kernelWidth.ToString();
+                divisorInput.Text = cf.Divisor.ToString();
+                offsetInput.Text = cf.Offset.ToString();
+                anchorXInput.Text = cf.Anchor.X.ToString();
+                anchorYInput.Text = cf.Anchor.Y.ToString();
+            }
+            else
+            {
+                filterInformationMatrix.RowCount = 1;
+                filterInformationMatrix.ColumnCount = 1;
+                filterNameInput.Text = "new filter";
+                kernelRowsInput.Text = "";
+                kernelColumnsInput.Text = "";
+                divisorInput.Text = "";
+                offsetInput.Text = "";
+                anchorXInput.Text = "";
+                anchorYInput.Text = "";
+            }
         }
 
         private void SaveConvolutionFilterInfo()
@@ -419,11 +439,21 @@ namespace WInFormsImageFiltering
                 offset: offset,
                 anchor: anchor
             );
-            customFilters.Append(filter);
+            Button filterButton = new Button();
+            filterButton.AutoSize = true;
+            filterButton.Text = filter.Name;
+            filterButton.Click += (sender, e) => UseConvolutionFilter(filter);
+            customFilters.Controls.Add(filterButton);
         }
         private void FilterInformationSaveButton_Click(object sender, EventArgs e)
         {
             SaveConvolutionFilterInfo();
+        }
+
+        private void filterInformationNewButton_Click(object sender, EventArgs e)
+        {
+            selectedFilter = null;
+            DisplayConvolutionFilterInfo(null);
         }
 
         private void KernelDimensions_TextChanged(object sender, EventArgs e)
@@ -474,9 +504,7 @@ namespace WInFormsImageFiltering
 
         private void BlurButton_Click(object sender, EventArgs e)
         {
-            ApplyConvolutionFilter(blurFilter);
-            ApplyChanges();
-            DisplayConvolutionFilterInfo(blurFilter);
+            UseConvolutionFilter(blurFilter);
         }
 
         // Gaussian smoothing
@@ -493,9 +521,7 @@ namespace WInFormsImageFiltering
         );
         private void GaussianSmoothingButton_Click(object sender, EventArgs e)
         {
-            ApplyConvolutionFilter(gaussianSmoothingFilter);
-            ApplyChanges();
-            DisplayConvolutionFilterInfo(gaussianSmoothingFilter);
+            UseConvolutionFilter(gaussianSmoothingFilter);
         }
 
         // Sharpen
@@ -509,9 +535,7 @@ namespace WInFormsImageFiltering
         );
         private void SharpenButton_Click(object sender, EventArgs e)
         {
-            ApplyConvolutionFilter(sharpenFilter);
-            ApplyChanges();
-            DisplayConvolutionFilterInfo(sharpenFilter);
+            UseConvolutionFilter(sharpenFilter);
         }
 
         // Edge detection
@@ -525,9 +549,7 @@ namespace WInFormsImageFiltering
         );
         private void EdgeDetectionButton_Click(object sender, EventArgs e)
         {
-            ApplyConvolutionFilter(edgeDetectionFilter);
-            ApplyChanges();
-            DisplayConvolutionFilterInfo(edgeDetectionFilter);
+            UseConvolutionFilter (edgeDetectionFilter);
         }
 
         // Emboss
@@ -541,9 +563,7 @@ namespace WInFormsImageFiltering
         );
         private void EmbossButton_Click(object sender, EventArgs e)
         {
-            ApplyConvolutionFilter(embossFilter);
-            ApplyChanges();
-            DisplayConvolutionFilterInfo(embossFilter);
+            UseConvolutionFilter(embossFilter);
         }
 
         #endregion
