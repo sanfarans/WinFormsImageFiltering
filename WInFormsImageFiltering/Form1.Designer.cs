@@ -99,7 +99,7 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.kernelRowsInput = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.filterInformationLabel = new System.Windows.Forms.Label();
             this.filterInformationMatrix = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
@@ -750,7 +750,7 @@
             this.panel2.Controls.Add(this.filterInformationSaveButton);
             this.panel2.Controls.Add(this.filterNameInput);
             this.panel2.Controls.Add(this.filterInformationTable);
-            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.filterInformationLabel);
             this.panel2.Controls.Add(this.filterInformationMatrix);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(1203, 3);
@@ -1025,15 +1025,15 @@
             this.kernelRowsInput.TabIndex = 14;
             this.kernelRowsInput.TextChanged += new System.EventHandler(this.KernelDimensions_TextChanged);
             // 
-            // label5
+            // filterInformationLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(67, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(231, 38);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Filter information";
+            this.filterInformationLabel.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.filterInformationLabel.Location = new System.Drawing.Point(41, 64);
+            this.filterInformationLabel.Name = "filterInformationLabel";
+            this.filterInformationLabel.Size = new System.Drawing.Size(300, 38);
+            this.filterInformationLabel.TabIndex = 1;
+            this.filterInformationLabel.Text = "Filter information";
+            this.filterInformationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // filterInformationMatrix
             // 
@@ -1276,7 +1276,7 @@
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView filterInformationMatrix;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label filterInformationLabel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel filterInformationTable;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;

@@ -30,6 +30,7 @@ namespace WInFormsImageFiltering
         public Form1()
         {
             InitializeComponent();
+            DisplayConvolutionFilterInfo(null);
         }
 
         private void LoadImageButton_Click(object sender, EventArgs e)
@@ -369,6 +370,7 @@ namespace WInFormsImageFiltering
         {
             if (cf != null)
             {
+                filterInformationLabel.Text = "Filter information";
                 selectedFilter = cf;
                 double[,] kernel = cf.Kernel;
                 int kernelHeight = kernel.GetLength(0);
@@ -388,15 +390,19 @@ namespace WInFormsImageFiltering
             }
             else
             {
-                filterInformationMatrix.RowCount = 1;
-                filterInformationMatrix.ColumnCount = 1;
+                filterInformationLabel.Text = "Create new filter";
+                filterInformationMatrix.RowCount = 3;
+                filterInformationMatrix.ColumnCount = 3;
+                for (int x = 0; x < 3; x++)
+                    for (int y = 0; y < 3; y++)
+                        filterInformationMatrix.Rows[y].Cells[x].Value = (double)0;
                 filterNameInput.Text = "new filter";
-                kernelRowsInput.Text = "";
-                kernelColumnsInput.Text = "";
-                divisorInput.Text = "";
-                offsetInput.Text = "";
-                anchorXInput.Text = "";
-                anchorYInput.Text = "";
+                kernelRowsInput.Text = "3";
+                kernelColumnsInput.Text = "3";
+                divisorInput.Text = "1";
+                offsetInput.Text = "0";
+                anchorXInput.Text = "1";
+                anchorYInput.Text = "1";
             }
         }
         private void AutocomputeDivisorButton_Click(object sender, EventArgs e)
@@ -605,9 +611,6 @@ namespace WInFormsImageFiltering
         {
             UseConvolutionFilter(embossFilter);
         }
-
-        #endregion
-
         private void inspectBlurButton_Click(object sender, EventArgs e)
         {
             DisplayConvolutionFilterInfo(blurFilter);
@@ -632,5 +635,9 @@ namespace WInFormsImageFiltering
         {
             DisplayConvolutionFilterInfo(embossFilter);
         }
+
+        #endregion
+
+
     }
 }
