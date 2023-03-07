@@ -274,15 +274,39 @@ namespace WInFormsImageFiltering
         #endregion
 
         #region Convolution filters
-        private void ApplyConvolutionFilter(double[,] matrix, double divisor = 1)
+        public class ConvolutionFilter
+        {
+            public string Name { get; set; }
+            public double[,] Kernel { get; set; }
+            public double Divisor { get; set; }
+            public double Offset { get; set; }
+            public Point Anchor { get; set; }
+
+            public ConvolutionFilter(string name, double[,] kernel, double divisor = 1, double offset = 0, Point? anchor = null)
+            {
+                Name = name;
+                Kernel = kernel;
+                Divisor = divisor;
+                Offset = offset;
+                if (anchor != null)
+                    Anchor = (Point)anchor;
+                else
+                {
+                    int kernelWidth = kernel.GetLength(0);
+                    int kernelHeight = kernel.GetLength(1);
+                    Anchor = new Point(kernelWidth/2, kernelHeight/2);
+                }
+            }
+        }
+        private void ApplyConvolutionFilter(ConvolutionFilter cf)
         {
             if (outputBitmap == null || preview == null)
                 return;
-
-            int matrixWidth = matrix.GetLength(0);
-            int matrixHeight = matrix.GetLength(1);
-            int halfWidth = matrixWidth / 2;
-            int halfHeight = matrixHeight / 2;
+            double[,] kernel = cf.Kernel;
+            double divisor = cf.Divisor;
+            double offset = cf.Offset;
+            int kernelWidth = kernel.GetLength(0);
+            int kernelHeight = kernel.GetLength(1);
 
             progressBar.Value = 0;
             progressBar.Minimum = 0;
@@ -296,17 +320,17 @@ namespace WInFormsImageFiltering
                     double green = 0;
                     double blue = 0;
 
-                    for (int i = 0; i < matrixWidth; i++)
+                    for (int i = 0; i < kernelWidth; i++)
                     {
-                        int currentX = x + i - halfWidth;
+                        int currentX = x + i - cf.Anchor.X;
                         if (currentX < 0)
                             currentX = 0;
                         else if (currentX >= outputBitmap.Width)
                             currentX = outputBitmap.Width - 1;
 
-                        for (int j = 0; j < matrixHeight; j++)
+                        for (int j = 0; j < kernelHeight; j++)
                         {
-                            int currentY = y + j - halfHeight;
+                            int currentY = y + j - cf.Anchor.Y;
                             if (currentY < 0)
                                 currentY = 0;
                             else if (currentY >= outputBitmap.Height)
@@ -314,16 +338,16 @@ namespace WInFormsImageFiltering
 
                             Color pixelColor = outputBitmap.GetPixel(currentX, currentY);
 
-                            double matrixValue = matrix[i, j];
-                            red += pixelColor.R * matrixValue;
-                            green += pixelColor.G * matrixValue;
-                            blue += pixelColor.B * matrixValue;
+                            double kernelValue = kernel[i, j];
+                            red += pixelColor.R * kernelValue;
+                            green += pixelColor.G * kernelValue;
+                            blue += pixelColor.B * kernelValue;
                         }
                     }
 
-                    red = Math.Clamp(red / divisor, 0, 255);
-                    green = Math.Clamp(green / divisor, 0, 255);
-                    blue = Math.Clamp(blue / divisor, 0, 255);
+                    red = Math.Clamp(offset + red / divisor, 0, 255);
+                    green = Math.Clamp(offset + green / divisor, 0, 255);
+                    blue = Math.Clamp(offset + blue / divisor, 0, 255);
 
                     Color newPixelColor = Color.FromArgb((byte)255, (byte)red, (byte)green, (byte)blue);
                     preview.SetPixel(x, y, newPixelColor);
@@ -333,74 +357,90 @@ namespace WInFormsImageFiltering
             outputImage.Image = preview;
         }
 
+
         // Blur
-        private void BlurButton_Click(object sender, EventArgs e)
-        {
-            double[,] blurFilter = new double[5, 5] {
+        ConvolutionFilter blurFilter = new(
+            name: "Blur",
+            kernel: new double[5, 5] {
                 { 1, 1, 1, 1, 1 },
                 { 1, 1, 1, 1, 1 },
                 { 1, 1, 1, 1, 1 },
                 { 1, 1, 1, 1, 1 },
                 { 1, 1, 1, 1, 1 }
-            };
-            double divisor = 25;
-            ApplyConvolutionFilter(blurFilter, divisor);
+            },
+            divisor: 25
+        );
+
+        private void BlurButton_Click(object sender, EventArgs e)
+        {
+            ApplyConvolutionFilter(blurFilter);
             ApplyChanges();
         }
 
         // Gaussian smoothing
-        private void GaussianSmoothingButton_Click(object sender, EventArgs e)
-        {
-            double[,] gaussianSmoothingFilter = new double[5, 5] {
+        ConvolutionFilter gaussianSmoothingFilter = new(
+            name: "Gaussian smoothing",
+            kernel: new double[5, 5] {
                 { 0, 1, 2, 1, 0 },
                 { 1, 4, 8, 4, 1 },
                 { 2, 8, 16, 8, 2 },
                 { 1, 4, 8, 4, 1 },
                 { 0, 1, 2, 1, 0 }
-            };
-            double divisor = 80;
-            ApplyConvolutionFilter(gaussianSmoothingFilter, divisor);
+            },
+            divisor: 80
+        );
+        private void GaussianSmoothingButton_Click(object sender, EventArgs e)
+        {
+            ApplyConvolutionFilter(gaussianSmoothingFilter);
             ApplyChanges();
         }
-    
+
         // Sharpen
-        private void SharpenButton_Click(object sender, EventArgs e)
-        {
-            double[,] sharpenFilter = new double[3, 3] {
+        ConvolutionFilter sharpenFilter = new(
+            name: "Sharpen",
+            kernel: new double[3, 3] {
                 { -1, -1, -1 },
                 { -1, 9, -1 },
                 { -1, -1, -1 }
-            };
+            }
+        );
+        private void SharpenButton_Click(object sender, EventArgs e)
+        {
             ApplyConvolutionFilter(sharpenFilter);
             ApplyChanges();
         }
 
         // Edge detection
-        private void EdgeDetectionButton_Click(object sender, EventArgs e)
-        {
-            double[,] edgeDetectionFilter = new double[3, 3] {
+        ConvolutionFilter edgeDetectionFilter = new(
+            name: "Edge detection",
+            kernel: new double[3, 3] {
                 { -1, -1, -1 },
                 { -1, 8, -1 },
                 { -1, -1, -1 }
-            };
+            }
+        );
+        private void EdgeDetectionButton_Click(object sender, EventArgs e)
+        {
             ApplyConvolutionFilter(edgeDetectionFilter);
             ApplyChanges();
         }
 
         // Emboss
-        private void EmbossButton_Click(object sender, EventArgs e)
-        {
-            double[,] embossFilter = new double[3, 3] {
+        ConvolutionFilter embossFilter = new(
+            name: "Emboss",
+            kernel: new double[3, 3] {
                 { -1, 0, 1 },
                 { -1, 1, 1 },
                 { -1, 0, 1 }
-            };
+            }
+        );
+        private void EmbossButton_Click(object sender, EventArgs e)
+        {
             ApplyConvolutionFilter(embossFilter);
             ApplyChanges();
         }
 
+
         #endregion
-
-
     }
 }
