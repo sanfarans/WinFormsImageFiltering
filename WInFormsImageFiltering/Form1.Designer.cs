@@ -60,12 +60,32 @@
             this.button2 = new System.Windows.Forms.Button();
             this.blurButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.filterNameInput = new System.Windows.Forms.TextBox();
+            this.filterInformationTable = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.anchorYInput = new System.Windows.Forms.TextBox();
+            this.anchorXInput = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.offsetInput = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.divisorInput = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.kernelColumnsInput = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.kernelRowsInput = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.filterInformationMatrix = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.filterNameLabel = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -80,7 +100,13 @@
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contrastSlider)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.filterInformationTable.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filterInformationMatrix)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
@@ -468,24 +494,282 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.filterNameLabel);
+            this.panel2.Controls.Add(this.filterNameInput);
+            this.panel2.Controls.Add(this.filterInformationTable);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.filterInformationMatrix);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(1203, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(376, 747);
             this.panel2.TabIndex = 1;
             // 
-            // dataGridView1
+            // filterNameInput
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 174);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(300, 188);
-            this.dataGridView1.TabIndex = 0;
+            this.filterNameInput.Location = new System.Drawing.Point(41, 141);
+            this.filterNameInput.Name = "filterNameInput";
+            this.filterNameInput.Size = new System.Drawing.Size(300, 27);
+            this.filterNameInput.TabIndex = 16;
+            this.filterNameInput.Text = "filter name";
+            this.filterNameInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // filterInformationTable
+            // 
+            this.filterInformationTable.ColumnCount = 1;
+            this.filterInformationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.filterInformationTable.Controls.Add(this.tableLayoutPanel11, 0, 4);
+            this.filterInformationTable.Controls.Add(this.tableLayoutPanel10, 0, 3);
+            this.filterInformationTable.Controls.Add(this.tableLayoutPanel9, 0, 2);
+            this.filterInformationTable.Controls.Add(this.tableLayoutPanel8, 0, 1);
+            this.filterInformationTable.Controls.Add(this.tableLayoutPanel7, 0, 0);
+            this.filterInformationTable.Location = new System.Drawing.Point(67, 370);
+            this.filterInformationTable.Name = "filterInformationTable";
+            this.filterInformationTable.RowCount = 5;
+            this.filterInformationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.filterInformationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.filterInformationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.filterInformationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.filterInformationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.filterInformationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.filterInformationTable.Size = new System.Drawing.Size(257, 250);
+            this.filterInformationTable.TabIndex = 15;
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 5;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel11.Controls.Add(this.label8, 3, 0);
+            this.tableLayoutPanel11.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel11.Controls.Add(this.label16, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.anchorYInput, 4, 0);
+            this.tableLayoutPanel11.Controls.Add(this.anchorXInput, 2, 0);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 203);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(250, 40);
+            this.tableLayoutPanel11.TabIndex = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(190, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 40);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "y:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(128, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 40);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "x:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 10);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 20);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "anchor";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // anchorYInput
+            // 
+            this.anchorYInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.anchorYInput.Location = new System.Drawing.Point(215, 6);
+            this.anchorYInput.Name = "anchorYInput";
+            this.anchorYInput.Size = new System.Drawing.Size(32, 27);
+            this.anchorYInput.TabIndex = 16;
+            // 
+            // anchorXInput
+            // 
+            this.anchorXInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.anchorXInput.Location = new System.Drawing.Point(153, 6);
+            this.anchorXInput.Name = "anchorXInput";
+            this.anchorXInput.Size = new System.Drawing.Size(31, 27);
+            this.anchorXInput.TabIndex = 15;
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Controls.Add(this.label15, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.offsetInput, 1, 0);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 153);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(250, 40);
+            this.tableLayoutPanel10.TabIndex = 3;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 10);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(47, 20);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "offset";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // offsetInput
+            // 
+            this.offsetInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.offsetInput.Location = new System.Drawing.Point(128, 6);
+            this.offsetInput.Name = "offsetInput";
+            this.offsetInput.Size = new System.Drawing.Size(119, 27);
+            this.offsetInput.TabIndex = 14;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel9.Controls.Add(this.label14, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.divisorInput, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.button4, 2, 0);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 103);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(250, 40);
+            this.tableLayoutPanel9.TabIndex = 2;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 10);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 20);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "divisor";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // divisorInput
+            // 
+            this.divisorInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.divisorInput.Location = new System.Drawing.Point(128, 6);
+            this.divisorInput.Name = "divisorInput";
+            this.divisorInput.Size = new System.Drawing.Size(56, 27);
+            this.divisorInput.TabIndex = 14;
+            // 
+            // button4
+            // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button4.Location = new System.Drawing.Point(190, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(57, 34);
+            this.button4.TabIndex = 15;
+            this.button4.Text = "auto";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.label13, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.kernelColumnsInput, 1, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 53);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(250, 40);
+            this.tableLayoutPanel8.TabIndex = 1;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 10);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 20);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "kernel columns";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // kernelColumnsInput
+            // 
+            this.kernelColumnsInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.kernelColumnsInput.Location = new System.Drawing.Point(128, 6);
+            this.kernelColumnsInput.Name = "kernelColumnsInput";
+            this.kernelColumnsInput.Size = new System.Drawing.Size(119, 27);
+            this.kernelColumnsInput.TabIndex = 14;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.kernelRowsInput, 1, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(250, 40);
+            this.tableLayoutPanel7.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 20);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "kernel rows";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // kernelRowsInput
+            // 
+            this.kernelRowsInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.kernelRowsInput.Location = new System.Drawing.Point(128, 6);
+            this.kernelRowsInput.Name = "kernelRowsInput";
+            this.kernelRowsInput.Size = new System.Drawing.Size(119, 27);
+            this.kernelRowsInput.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(67, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(231, 38);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Filter information";
+            // 
+            // filterInformationMatrix
+            // 
+            this.filterInformationMatrix.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.filterInformationMatrix.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.filterInformationMatrix.ColumnHeadersVisible = false;
+            this.filterInformationMatrix.Location = new System.Drawing.Point(41, 174);
+            this.filterInformationMatrix.Name = "filterInformationMatrix";
+            this.filterInformationMatrix.RowHeadersVisible = false;
+            this.filterInformationMatrix.RowHeadersWidth = 51;
+            this.filterInformationMatrix.RowTemplate.Height = 29;
+            this.filterInformationMatrix.Size = new System.Drawing.Size(300, 163);
+            this.filterInformationMatrix.TabIndex = 0;
             // 
             // tableLayoutPanel5
             // 
@@ -520,32 +804,14 @@
             this.label2.Text = "Brightness correction";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(67, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(231, 38);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Filter information";
-            // 
-            // filterNameLabel
-            // 
-            this.filterNameLabel.AutoSize = true;
-            this.filterNameLabel.Location = new System.Drawing.Point(133, 140);
-            this.filterNameLabel.Name = "filterNameLabel";
-            this.filterNameLabel.Size = new System.Drawing.Size(81, 20);
-            this.filterNameLabel.TabIndex = 6;
-            this.filterNameLabel.Text = "filter name";
-            this.filterNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1582, 753);
             this.Controls.Add(this.mainTableLayoutPanel);
+            this.MaximumSize = new System.Drawing.Size(1600, 800);
+            this.MinimumSize = new System.Drawing.Size(1600, 800);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -568,7 +834,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.contrastSlider)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.filterInformationTable.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filterInformationMatrix)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
@@ -613,8 +890,28 @@
         private System.Windows.Forms.Button undoButton;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView filterInformationMatrix;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label filterNameLabel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TableLayoutPanel filterInformationTable;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox offsetInput;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox divisorInput;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox kernelColumnsInput;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TextBox kernelRowsInput;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox anchorYInput;
+        private System.Windows.Forms.TextBox anchorXInput;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox filterNameInput;
     }
 }

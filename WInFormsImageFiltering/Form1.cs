@@ -292,8 +292,8 @@ namespace WInFormsImageFiltering
                     Anchor = (Point)anchor;
                 else
                 {
-                    int kernelWidth = kernel.GetLength(0);
-                    int kernelHeight = kernel.GetLength(1);
+                    int kernelHeight = kernel.GetLength(0);
+                    int kernelWidth = kernel.GetLength(1);
                     Anchor = new Point(kernelWidth/2, kernelHeight/2);
                 }
             }
@@ -305,8 +305,8 @@ namespace WInFormsImageFiltering
             double[,] kernel = cf.Kernel;
             double divisor = cf.Divisor;
             double offset = cf.Offset;
-            int kernelWidth = kernel.GetLength(0);
-            int kernelHeight = kernel.GetLength(1);
+            int kernelHeight = kernel.GetLength(0);
+            int kernelWidth = kernel.GetLength(1);
 
             progressBar.Value = 0;
             progressBar.Minimum = 0;
@@ -357,6 +357,25 @@ namespace WInFormsImageFiltering
             outputImage.Image = preview;
         }
 
+        private void DisplayConvolutionFilterInfo(ConvolutionFilter cf)
+        {
+            double[,] kernel = cf.Kernel;
+            int kernelHeight = kernel.GetLength(0);
+            int kernelWidth = kernel.GetLength(1);
+            filterInformationMatrix.RowCount = kernelHeight;
+            filterInformationMatrix.ColumnCount = kernelWidth;
+            for (int x = 0; x < kernelWidth; x++)
+                for (int y = 0; y < kernelHeight; y++)
+                    filterInformationMatrix.Rows[y].Cells[x].Value = kernel[y, x];
+            filterNameInput.Text = cf.Name;
+            kernelRowsInput.Text = kernelHeight.ToString();
+            kernelColumnsInput.Text = kernelWidth.ToString();
+            divisorInput.Text = cf.Divisor.ToString();
+            offsetInput.Text = cf.Offset.ToString();
+            anchorXInput.Text = cf.Anchor.X.ToString();
+            anchorYInput.Text = cf.Anchor.Y.ToString();
+        }
+
 
         // Blur
         ConvolutionFilter blurFilter = new(
@@ -375,6 +394,7 @@ namespace WInFormsImageFiltering
         {
             ApplyConvolutionFilter(blurFilter);
             ApplyChanges();
+            DisplayConvolutionFilterInfo(blurFilter);
         }
 
         // Gaussian smoothing
@@ -393,6 +413,7 @@ namespace WInFormsImageFiltering
         {
             ApplyConvolutionFilter(gaussianSmoothingFilter);
             ApplyChanges();
+            DisplayConvolutionFilterInfo(gaussianSmoothingFilter);
         }
 
         // Sharpen
@@ -408,6 +429,7 @@ namespace WInFormsImageFiltering
         {
             ApplyConvolutionFilter(sharpenFilter);
             ApplyChanges();
+            DisplayConvolutionFilterInfo(sharpenFilter);
         }
 
         // Edge detection
@@ -423,6 +445,7 @@ namespace WInFormsImageFiltering
         {
             ApplyConvolutionFilter(edgeDetectionFilter);
             ApplyChanges();
+            DisplayConvolutionFilterInfo(edgeDetectionFilter);
         }
 
         // Emboss
@@ -438,9 +461,10 @@ namespace WInFormsImageFiltering
         {
             ApplyConvolutionFilter(embossFilter);
             ApplyChanges();
+            DisplayConvolutionFilterInfo(embossFilter);
         }
 
-
         #endregion
+
     }
 }
