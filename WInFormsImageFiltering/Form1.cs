@@ -399,6 +399,29 @@ namespace WInFormsImageFiltering
                 anchorYInput.Text = "";
             }
         }
+        private void autocomputeDivisorButton_Click(object sender, EventArgs e)
+        {
+            if (kernelRowsInput.Text == "" || kernelColumnsInput.Text == "")
+                return;
+            double divisor = 0;
+            int kernelHeight = int.Parse(kernelRowsInput.Text);
+            int kernelWidth = int.Parse(kernelColumnsInput.Text);
+            for (int x = 0; x < kernelWidth; x++)
+                for (int y = 0; y < kernelHeight; y++)
+                {
+                    double value;
+                    try
+                    {
+                        value = (double)filterInformationMatrix.Rows[y].Cells[x].Value;
+                    }
+                    catch (Exception)
+                    {
+                        value = double.Parse((string)filterInformationMatrix.Rows[y].Cells[x].Value);
+                    }
+                    divisor += value;
+                }
+            divisorInput.Text = divisor.ToString();
+        }
 
         private void SaveConvolutionFilterInfo()
         {
@@ -567,5 +590,6 @@ namespace WInFormsImageFiltering
         }
 
         #endregion
+
     }
 }

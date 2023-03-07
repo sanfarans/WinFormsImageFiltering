@@ -61,6 +61,7 @@
             this.blurButton = new System.Windows.Forms.Button();
             this.customFilters = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.filterInformationNewButton = new System.Windows.Forms.Button();
             this.filterInformationSaveButton = new System.Windows.Forms.Button();
             this.filterNameInput = new System.Windows.Forms.TextBox();
             this.filterInformationTable = new System.Windows.Forms.TableLayoutPanel();
@@ -76,7 +77,7 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label14 = new System.Windows.Forms.Label();
             this.divisorInput = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.autocomputeDivisorButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.kernelColumnsInput = new System.Windows.Forms.TextBox();
@@ -88,7 +89,6 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
-            this.filterInformationNewButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -519,6 +519,16 @@
             this.panel2.Size = new System.Drawing.Size(376, 947);
             this.panel2.TabIndex = 1;
             // 
+            // filterInformationNewButton
+            // 
+            this.filterInformationNewButton.Location = new System.Drawing.Point(142, 796);
+            this.filterInformationNewButton.Name = "filterInformationNewButton";
+            this.filterInformationNewButton.Size = new System.Drawing.Size(94, 29);
+            this.filterInformationNewButton.TabIndex = 18;
+            this.filterInformationNewButton.Text = "New";
+            this.filterInformationNewButton.UseVisualStyleBackColor = true;
+            this.filterInformationNewButton.Click += new System.EventHandler(this.filterInformationNewButton_Click);
+            // 
             // filterInformationSaveButton
             // 
             this.filterInformationSaveButton.Location = new System.Drawing.Point(142, 747);
@@ -670,7 +680,7 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel9.Controls.Add(this.label14, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.divisorInput, 1, 0);
-            this.tableLayoutPanel9.Controls.Add(this.button4, 2, 0);
+            this.tableLayoutPanel9.Controls.Add(this.autocomputeDivisorButton, 2, 0);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 103);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
@@ -697,15 +707,16 @@
             this.divisorInput.Size = new System.Drawing.Size(56, 27);
             this.divisorInput.TabIndex = 14;
             // 
-            // button4
+            // autocomputeDivisorButton
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(190, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(57, 34);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "auto";
-            this.button4.UseVisualStyleBackColor = true;
+            this.autocomputeDivisorButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.autocomputeDivisorButton.Location = new System.Drawing.Point(190, 3);
+            this.autocomputeDivisorButton.Name = "autocomputeDivisorButton";
+            this.autocomputeDivisorButton.Size = new System.Drawing.Size(57, 34);
+            this.autocomputeDivisorButton.TabIndex = 15;
+            this.autocomputeDivisorButton.Text = "auto";
+            this.autocomputeDivisorButton.UseVisualStyleBackColor = true;
+            this.autocomputeDivisorButton.Click += new System.EventHandler(this.autocomputeDivisorButton_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -831,16 +842,6 @@
             this.label2.Text = "Brightness correction";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // filterInformationNewButton
-            // 
-            this.filterInformationNewButton.Location = new System.Drawing.Point(142, 796);
-            this.filterInformationNewButton.Name = "filterInformationNewButton";
-            this.filterInformationNewButton.Size = new System.Drawing.Size(94, 29);
-            this.filterInformationNewButton.TabIndex = 18;
-            this.filterInformationNewButton.Text = "New";
-            this.filterInformationNewButton.UseVisualStyleBackColor = true;
-            this.filterInformationNewButton.Click += new System.EventHandler(this.filterInformationNewButton_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -948,7 +949,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox anchorYInput;
         private System.Windows.Forms.TextBox anchorXInput;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button autocomputeDivisorButton;
         private System.Windows.Forms.TextBox filterNameInput;
         private System.Windows.Forms.Button filterInformationSaveButton;
         private System.Windows.Forms.FlowLayoutPanel customFilters;
