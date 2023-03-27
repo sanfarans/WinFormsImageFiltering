@@ -27,6 +27,8 @@ namespace WInFormsImageFiltering
 
         private ConvolutionFilter? selectedFilter;
 
+        private Random random = new Random();
+
         public Form1()
         {
             InitializeComponent();
@@ -637,6 +639,8 @@ namespace WInFormsImageFiltering
         }
         #endregion
 
+        #region Lab task
+
         // Lab task
 
         private const int EDGE_DETECTION_THRESHOLD = 50;
@@ -737,6 +741,62 @@ namespace WInFormsImageFiltering
         private void bidirectionalEdgeDetectionButton_Click(object sender, EventArgs e)
         {
             ApplyBiderectionalEdgeDetection();
+        }
+
+        #endregion
+
+        private int RgbToGreyscale(Color color)
+        {
+            return (int)(0.299 * color.R + 0.587 * color.G + 0.114 * color.B);
+        }
+        private Color ConvertToGrayscale(Color colorIn)
+        {
+            int grayscale = RgbToGreyscale(colorIn);
+            Color colorOut = Color.FromArgb(
+               colorIn.A,
+               grayscale,
+               grayscale,
+               grayscale
+            );
+            return colorOut;
+        }
+        private void GrayscaleButton_Click(object sender, EventArgs e)
+        {
+            ApplyFunctionalFilter(ConvertToGrayscale);
+            ApplyChanges();
+        }
+
+        private Color RandomDithering(Color colorIn, int K = 4)
+        {
+            Color[] colors = new Color[4]
+            {
+                Color.Black,
+                Color.DarkGray,
+                Color.LightGray,
+                Color.White
+            };
+
+            int factor = 256 / K;
+            int grayscale = RgbToGreyscale(colorIn);
+
+            int quantized = grayscale + (int)(256 * (random.NextDouble() - 0.5));
+            quantized = Math.Clamp(quantized, 0, 255);
+
+            int index = quantized / factor;
+            
+            Color colorOut = Color.FromArgb(
+                colorIn.A,
+                quantized,
+                quantized,
+                quantized
+            );
+            return colors[index];
+        }
+
+        private void randomDitheringButton_Click(object sender, EventArgs e)
+        {
+            ApplyFunctionalFilter((Color) => RandomDithering(Color));
+            ApplyChanges();
         }
     }
 }

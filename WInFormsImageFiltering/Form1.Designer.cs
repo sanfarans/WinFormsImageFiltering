@@ -34,6 +34,9 @@
             this.inputImage = new System.Windows.Forms.PictureBox();
             this.outputImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.octreeColorQuantizationButton = new System.Windows.Forms.Button();
+            this.randomDitheringButton = new System.Windows.Forms.Button();
+            this.grayscaleButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.undoButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -74,6 +77,7 @@
             this.blurButton = new System.Windows.Forms.Button();
             this.inspectBlurButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.bidirectionalEdgeDetectionButton = new System.Windows.Forms.Button();
             this.customFilters = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.filterInformationNewButton = new System.Windows.Forms.Button();
@@ -113,7 +117,6 @@
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.bidirectionalEdgeDetectionButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -221,6 +224,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.octreeColorQuantizationButton);
+            this.panel1.Controls.Add(this.randomDitheringButton);
+            this.panel1.Controls.Add(this.grayscaleButton);
             this.panel1.Controls.Add(this.resetButton);
             this.panel1.Controls.Add(this.undoButton);
             this.panel1.Controls.Add(this.label4);
@@ -232,6 +238,35 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(182, 488);
             this.panel1.TabIndex = 2;
+            // 
+            // octreeColorQuantizationButton
+            // 
+            this.octreeColorQuantizationButton.Location = new System.Drawing.Point(13, 307);
+            this.octreeColorQuantizationButton.Name = "octreeColorQuantizationButton";
+            this.octreeColorQuantizationButton.Size = new System.Drawing.Size(145, 53);
+            this.octreeColorQuantizationButton.TabIndex = 8;
+            this.octreeColorQuantizationButton.Text = "Octree Color Quantization";
+            this.octreeColorQuantizationButton.UseVisualStyleBackColor = true;
+            // 
+            // randomDitheringButton
+            // 
+            this.randomDitheringButton.Location = new System.Drawing.Point(-2, 272);
+            this.randomDitheringButton.Name = "randomDitheringButton";
+            this.randomDitheringButton.Size = new System.Drawing.Size(187, 29);
+            this.randomDitheringButton.TabIndex = 7;
+            this.randomDitheringButton.Text = "Random Dithering K=4";
+            this.randomDitheringButton.UseVisualStyleBackColor = true;
+            this.randomDitheringButton.Click += new System.EventHandler(this.randomDitheringButton_Click);
+            // 
+            // grayscaleButton
+            // 
+            this.grayscaleButton.Location = new System.Drawing.Point(13, 237);
+            this.grayscaleButton.Name = "grayscaleButton";
+            this.grayscaleButton.Size = new System.Drawing.Size(145, 29);
+            this.grayscaleButton.TabIndex = 6;
+            this.grayscaleButton.Text = "Grayscale";
+            this.grayscaleButton.UseVisualStyleBackColor = true;
+            this.grayscaleButton.Click += new System.EventHandler(this.GrayscaleButton_Click);
             // 
             // resetButton
             // 
@@ -737,6 +772,17 @@
             this.label9.Text = "Blur";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // bidirectionalEdgeDetectionButton
+            // 
+            this.bidirectionalEdgeDetectionButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bidirectionalEdgeDetectionButton.Location = new System.Drawing.Point(951, 3);
+            this.bidirectionalEdgeDetectionButton.Name = "bidirectionalEdgeDetectionButton";
+            this.bidirectionalEdgeDetectionButton.Size = new System.Drawing.Size(234, 125);
+            this.bidirectionalEdgeDetectionButton.TabIndex = 16;
+            this.bidirectionalEdgeDetectionButton.Text = "Bidirectional edge detection";
+            this.bidirectionalEdgeDetectionButton.UseVisualStyleBackColor = true;
+            this.bidirectionalEdgeDetectionButton.Click += new System.EventHandler(this.bidirectionalEdgeDetectionButton_Click);
+            // 
             // customFilters
             // 
             this.customFilters.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1183,17 +1229,6 @@
             this.button13.Text = "Inspect";
             this.button13.UseVisualStyleBackColor = true;
             // 
-            // bidirectionalEdgeDetectionButton
-            // 
-            this.bidirectionalEdgeDetectionButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bidirectionalEdgeDetectionButton.Location = new System.Drawing.Point(951, 3);
-            this.bidirectionalEdgeDetectionButton.Name = "bidirectionalEdgeDetectionButton";
-            this.bidirectionalEdgeDetectionButton.Size = new System.Drawing.Size(234, 125);
-            this.bidirectionalEdgeDetectionButton.TabIndex = 16;
-            this.bidirectionalEdgeDetectionButton.Text = "Bidirectional edge detection";
-            this.bidirectionalEdgeDetectionButton.UseVisualStyleBackColor = true;
-            this.bidirectionalEdgeDetectionButton.Click += new System.EventHandler(this.bidirectionalEdgeDetectionButton_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1344,5 +1379,8 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button bidirectionalEdgeDetectionButton;
+        private System.Windows.Forms.Button octreeColorQuantizationButton;
+        private System.Windows.Forms.Button randomDitheringButton;
+        private System.Windows.Forms.Button grayscaleButton;
     }
 }
