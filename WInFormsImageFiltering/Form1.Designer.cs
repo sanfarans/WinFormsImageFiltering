@@ -31,19 +31,26 @@
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.inputImage = new System.Windows.Forms.PictureBox();
-            this.outputImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.octreeColorQuantizationButton = new System.Windows.Forms.Button();
-            this.randomDitheringButton = new System.Windows.Forms.Button();
-            this.grayscaleButton = new System.Windows.Forms.Button();
+            this.switchViewButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.undoButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.saveImageButton = new System.Windows.Forms.Button();
             this.loadImageButton = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.displayedImage = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.editingControlsTable = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.octreeColorQuantizationInput = new System.Windows.Forms.NumericUpDown();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.randomDitheringInput = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
             this.embossButton = new System.Windows.Forms.Button();
             this.inspectEmbossButton = new System.Windows.Forms.Button();
@@ -52,6 +59,7 @@
             this.edgeDetectionButton = new System.Windows.Forms.Button();
             this.inspectEdgeDetectionButton = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.grayscaleButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.sharpenButton = new System.Windows.Forms.Button();
             this.inspectSharpenButton = new System.Windows.Forms.Button();
@@ -78,6 +86,7 @@
             this.inspectBlurButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.bidirectionalEdgeDetectionButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.customFilters = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.filterInformationNewButton = new System.Windows.Forms.Button();
@@ -117,13 +126,19 @@
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
+            this.toggleSizeMode = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.inputImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outputImage)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayedImage)).BeginInit();
+            this.panel3.SuspendLayout();
             this.editingControlsTable.SuspendLayout();
+            this.tableLayoutPanel21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.octreeColorQuantizationInput)).BeginInit();
+            this.tableLayoutPanel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringInput)).BeginInit();
             this.tableLayoutPanel20.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
@@ -135,6 +150,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contrastSlider)).BeginInit();
             this.tableLayoutPanel12.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.filterInformationTable.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
@@ -162,7 +178,7 @@
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 1;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(1582, 953);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(1582, 981);
             this.mainTableLayoutPanel.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -170,63 +186,36 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.editingControlsTable, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.customFilters, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1194, 947);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1194, 975);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tableLayoutPanel2.Controls.Add(this.inputImage, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.outputImage, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 988F));
+            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 494F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1188, 494);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // inputImage
-            // 
-            this.inputImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputImage.Location = new System.Drawing.Point(20, 20);
-            this.inputImage.Margin = new System.Windows.Forms.Padding(20);
-            this.inputImage.Name = "inputImage";
-            this.inputImage.Size = new System.Drawing.Size(460, 454);
-            this.inputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.inputImage.TabIndex = 0;
-            this.inputImage.TabStop = false;
-            // 
-            // outputImage
-            // 
-            this.outputImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.outputImage.Location = new System.Drawing.Point(708, 20);
-            this.outputImage.Margin = new System.Windows.Forms.Padding(20);
-            this.outputImage.Name = "outputImage";
-            this.outputImage.Size = new System.Drawing.Size(460, 454);
-            this.outputImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.outputImage.TabIndex = 1;
-            this.outputImage.TabStop = false;
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.octreeColorQuantizationButton);
-            this.panel1.Controls.Add(this.randomDitheringButton);
-            this.panel1.Controls.Add(this.grayscaleButton);
+            this.panel1.Controls.Add(this.toggleSizeMode);
+            this.panel1.Controls.Add(this.switchViewButton);
             this.panel1.Controls.Add(this.resetButton);
             this.panel1.Controls.Add(this.undoButton);
             this.panel1.Controls.Add(this.label4);
@@ -234,45 +223,26 @@
             this.panel1.Controls.Add(this.saveImageButton);
             this.panel1.Controls.Add(this.loadImageButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(503, 3);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(182, 488);
-            this.panel1.TabIndex = 2;
+            this.panel1.Size = new System.Drawing.Size(194, 488);
+            this.panel1.TabIndex = 3;
             // 
-            // octreeColorQuantizationButton
+            // switchViewButton
             // 
-            this.octreeColorQuantizationButton.Location = new System.Drawing.Point(13, 307);
-            this.octreeColorQuantizationButton.Name = "octreeColorQuantizationButton";
-            this.octreeColorQuantizationButton.Size = new System.Drawing.Size(145, 53);
-            this.octreeColorQuantizationButton.TabIndex = 8;
-            this.octreeColorQuantizationButton.Text = "Octree Color Quantization";
-            this.octreeColorQuantizationButton.UseVisualStyleBackColor = true;
-            this.octreeColorQuantizationButton.Click += new System.EventHandler(this.octreeColorQuantizationButton_Click);
-            // 
-            // randomDitheringButton
-            // 
-            this.randomDitheringButton.Location = new System.Drawing.Point(-2, 272);
-            this.randomDitheringButton.Name = "randomDitheringButton";
-            this.randomDitheringButton.Size = new System.Drawing.Size(187, 29);
-            this.randomDitheringButton.TabIndex = 7;
-            this.randomDitheringButton.Text = "Random Dithering K=4";
-            this.randomDitheringButton.UseVisualStyleBackColor = true;
-            this.randomDitheringButton.Click += new System.EventHandler(this.randomDitheringButton_Click);
-            // 
-            // grayscaleButton
-            // 
-            this.grayscaleButton.Location = new System.Drawing.Point(13, 237);
-            this.grayscaleButton.Name = "grayscaleButton";
-            this.grayscaleButton.Size = new System.Drawing.Size(145, 29);
-            this.grayscaleButton.TabIndex = 6;
-            this.grayscaleButton.Text = "Grayscale";
-            this.grayscaleButton.UseVisualStyleBackColor = true;
-            this.grayscaleButton.Click += new System.EventHandler(this.GrayscaleButton_Click);
+            this.switchViewButton.Enabled = false;
+            this.switchViewButton.Location = new System.Drawing.Point(24, 207);
+            this.switchViewButton.Name = "switchViewButton";
+            this.switchViewButton.Size = new System.Drawing.Size(145, 29);
+            this.switchViewButton.TabIndex = 6;
+            this.switchViewButton.Text = "Show/Hide Initial";
+            this.switchViewButton.UseVisualStyleBackColor = true;
+            this.switchViewButton.Click += new System.EventHandler(this.switchViewButton_Click);
             // 
             // resetButton
             // 
             this.resetButton.Enabled = false;
-            this.resetButton.Location = new System.Drawing.Point(13, 192);
+            this.resetButton.Location = new System.Drawing.Point(24, 277);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(145, 29);
             this.resetButton.TabIndex = 5;
@@ -283,7 +253,7 @@
             // undoButton
             // 
             this.undoButton.Enabled = false;
-            this.undoButton.Location = new System.Drawing.Point(13, 157);
+            this.undoButton.Location = new System.Drawing.Point(24, 242);
             this.undoButton.Name = "undoButton";
             this.undoButton.Size = new System.Drawing.Size(145, 29);
             this.undoButton.TabIndex = 4;
@@ -294,7 +264,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 376);
+            this.label4.Location = new System.Drawing.Point(58, 374);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 20);
             this.label4.TabIndex = 3;
@@ -303,14 +273,14 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(13, 399);
+            this.progressBar.Location = new System.Drawing.Point(24, 397);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(145, 29);
             this.progressBar.TabIndex = 2;
             // 
             // saveImageButton
             // 
-            this.saveImageButton.Location = new System.Drawing.Point(13, 83);
+            this.saveImageButton.Location = new System.Drawing.Point(24, 104);
             this.saveImageButton.Name = "saveImageButton";
             this.saveImageButton.Size = new System.Drawing.Size(145, 29);
             this.saveImageButton.TabIndex = 1;
@@ -320,13 +290,44 @@
             // 
             // loadImageButton
             // 
-            this.loadImageButton.Location = new System.Drawing.Point(13, 48);
+            this.loadImageButton.Location = new System.Drawing.Point(24, 69);
             this.loadImageButton.Name = "loadImageButton";
             this.loadImageButton.Size = new System.Drawing.Size(145, 29);
             this.loadImageButton.TabIndex = 0;
             this.loadImageButton.Text = "Load Image";
             this.loadImageButton.UseVisualStyleBackColor = true;
             this.loadImageButton.Click += new System.EventHandler(this.LoadImageButton_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.AutoScroll = true;
+            this.panel4.Controls.Add(this.displayedImage);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(203, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(982, 488);
+            this.panel4.TabIndex = 4;
+            // 
+            // displayedImage
+            // 
+            this.displayedImage.Location = new System.Drawing.Point(0, 0);
+            this.displayedImage.Margin = new System.Windows.Forms.Padding(20);
+            this.displayedImage.Name = "displayedImage";
+            this.displayedImage.Size = new System.Drawing.Size(982, 488);
+            this.displayedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.displayedImage.TabIndex = 2;
+            this.displayedImage.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoScroll = true;
+            this.panel3.AutoSize = true;
+            this.panel3.Controls.Add(this.editingControlsTable);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 503);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1188, 469);
+            this.panel3.TabIndex = 3;
             // 
             // editingControlsTable
             // 
@@ -336,8 +337,11 @@
             this.editingControlsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.editingControlsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.editingControlsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.editingControlsTable.Controls.Add(this.tableLayoutPanel21, 4, 2);
+            this.editingControlsTable.Controls.Add(this.tableLayoutPanel15, 3, 2);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel20, 4, 1);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel19, 3, 1);
+            this.editingControlsTable.Controls.Add(this.grayscaleButton, 2, 2);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel18, 2, 1);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel17, 1, 1);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel6, 3, 0);
@@ -346,15 +350,141 @@
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel3, 2, 0);
             this.editingControlsTable.Controls.Add(this.tableLayoutPanel12, 0, 1);
             this.editingControlsTable.Controls.Add(this.bidirectionalEdgeDetectionButton, 4, 0);
+            this.editingControlsTable.Controls.Add(this.groupBox1, 0, 2);
             this.editingControlsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.editingControlsTable.Enabled = false;
-            this.editingControlsTable.Location = new System.Drawing.Point(3, 503);
+            this.editingControlsTable.Location = new System.Drawing.Point(0, 0);
             this.editingControlsTable.Name = "editingControlsTable";
-            this.editingControlsTable.RowCount = 2;
-            this.editingControlsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.editingControlsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.editingControlsTable.Size = new System.Drawing.Size(1188, 262);
-            this.editingControlsTable.TabIndex = 1;
+            this.editingControlsTable.RowCount = 3;
+            this.editingControlsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.editingControlsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.editingControlsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.editingControlsTable.Size = new System.Drawing.Size(1188, 469);
+            this.editingControlsTable.TabIndex = 2;
+            // 
+            // tableLayoutPanel21
+            // 
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel21.Controls.Add(this.label10, 0, 0);
+            this.tableLayoutPanel21.Controls.Add(this.button5, 0, 2);
+            this.tableLayoutPanel21.Controls.Add(this.octreeColorQuantizationInput, 0, 1);
+            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(951, 303);
+            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+            this.tableLayoutPanel21.RowCount = 3;
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(234, 163);
+            this.tableLayoutPanel21.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Location = new System.Drawing.Point(3, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(228, 32);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Octree Color Quantization";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button5
+            // 
+            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button5.Location = new System.Drawing.Point(3, 100);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(228, 60);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "Apply";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.OctreeColorQuantizationButton_Click);
+            // 
+            // octreeColorQuantizationInput
+            // 
+            this.octreeColorQuantizationInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.octreeColorQuantizationInput.Location = new System.Drawing.Point(4, 51);
+            this.octreeColorQuantizationInput.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.octreeColorQuantizationInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.octreeColorQuantizationInput.Name = "octreeColorQuantizationInput";
+            this.octreeColorQuantizationInput.Size = new System.Drawing.Size(225, 27);
+            this.octreeColorQuantizationInput.TabIndex = 4;
+            this.octreeColorQuantizationInput.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.tableLayoutPanel15.Controls.Add(this.randomDitheringInput, 0, 1);
+            this.tableLayoutPanel15.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.button4, 0, 2);
+            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(714, 303);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 3;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(231, 163);
+            this.tableLayoutPanel15.TabIndex = 18;
+            // 
+            // randomDitheringInput
+            // 
+            this.randomDitheringInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.randomDitheringInput.Location = new System.Drawing.Point(3, 51);
+            this.randomDitheringInput.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.randomDitheringInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomDitheringInput.Name = "randomDitheringInput";
+            this.randomDitheringInput.Size = new System.Drawing.Size(225, 27);
+            this.randomDitheringInput.TabIndex = 5;
+            this.randomDitheringInput.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(225, 32);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Random dithering";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button4
+            // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button4.Location = new System.Drawing.Point(3, 100);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(225, 60);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Apply";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.RandomDitheringButton_Click);
             // 
             // tableLayoutPanel20
             // 
@@ -365,20 +495,20 @@
             this.tableLayoutPanel20.Controls.Add(this.inspectEmbossButton, 1, 1);
             this.tableLayoutPanel20.Controls.Add(this.label18, 0, 0);
             this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel20.Location = new System.Drawing.Point(951, 134);
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(951, 153);
             this.tableLayoutPanel20.Name = "tableLayoutPanel20";
             this.tableLayoutPanel20.RowCount = 2;
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel20.Size = new System.Drawing.Size(234, 125);
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(234, 144);
             this.tableLayoutPanel20.TabIndex = 15;
             // 
             // embossButton
             // 
             this.embossButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.embossButton.Location = new System.Drawing.Point(3, 65);
+            this.embossButton.Location = new System.Drawing.Point(3, 75);
             this.embossButton.Name = "embossButton";
-            this.embossButton.Size = new System.Drawing.Size(111, 57);
+            this.embossButton.Size = new System.Drawing.Size(111, 66);
             this.embossButton.TabIndex = 0;
             this.embossButton.Text = "Apply";
             this.embossButton.UseVisualStyleBackColor = true;
@@ -387,9 +517,9 @@
             // inspectEmbossButton
             // 
             this.inspectEmbossButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inspectEmbossButton.Location = new System.Drawing.Point(120, 65);
+            this.inspectEmbossButton.Location = new System.Drawing.Point(120, 75);
             this.inspectEmbossButton.Name = "inspectEmbossButton";
-            this.inspectEmbossButton.Size = new System.Drawing.Size(111, 57);
+            this.inspectEmbossButton.Size = new System.Drawing.Size(111, 66);
             this.inspectEmbossButton.TabIndex = 1;
             this.inspectEmbossButton.Text = "Inspect";
             this.inspectEmbossButton.UseVisualStyleBackColor = true;
@@ -403,7 +533,7 @@
             this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label18.Location = new System.Drawing.Point(3, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(228, 62);
+            this.label18.Size = new System.Drawing.Size(228, 72);
             this.label18.TabIndex = 2;
             this.label18.Text = "Emboss";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -417,20 +547,20 @@
             this.tableLayoutPanel19.Controls.Add(this.inspectEdgeDetectionButton, 1, 1);
             this.tableLayoutPanel19.Controls.Add(this.label17, 0, 0);
             this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(714, 134);
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(714, 153);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
             this.tableLayoutPanel19.RowCount = 2;
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(231, 125);
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(231, 144);
             this.tableLayoutPanel19.TabIndex = 14;
             // 
             // edgeDetectionButton
             // 
             this.edgeDetectionButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.edgeDetectionButton.Location = new System.Drawing.Point(3, 65);
+            this.edgeDetectionButton.Location = new System.Drawing.Point(3, 75);
             this.edgeDetectionButton.Name = "edgeDetectionButton";
-            this.edgeDetectionButton.Size = new System.Drawing.Size(109, 57);
+            this.edgeDetectionButton.Size = new System.Drawing.Size(109, 66);
             this.edgeDetectionButton.TabIndex = 0;
             this.edgeDetectionButton.Text = "Apply";
             this.edgeDetectionButton.UseVisualStyleBackColor = true;
@@ -439,9 +569,9 @@
             // inspectEdgeDetectionButton
             // 
             this.inspectEdgeDetectionButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inspectEdgeDetectionButton.Location = new System.Drawing.Point(118, 65);
+            this.inspectEdgeDetectionButton.Location = new System.Drawing.Point(118, 75);
             this.inspectEdgeDetectionButton.Name = "inspectEdgeDetectionButton";
-            this.inspectEdgeDetectionButton.Size = new System.Drawing.Size(110, 57);
+            this.inspectEdgeDetectionButton.Size = new System.Drawing.Size(110, 66);
             this.inspectEdgeDetectionButton.TabIndex = 1;
             this.inspectEdgeDetectionButton.Text = "Inspect";
             this.inspectEdgeDetectionButton.UseVisualStyleBackColor = true;
@@ -455,10 +585,21 @@
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label17.Location = new System.Drawing.Point(3, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(225, 62);
+            this.label17.Size = new System.Drawing.Size(225, 72);
             this.label17.TabIndex = 2;
             this.label17.Text = "Edge detection";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // grayscaleButton
+            // 
+            this.grayscaleButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grayscaleButton.Location = new System.Drawing.Point(477, 303);
+            this.grayscaleButton.Name = "grayscaleButton";
+            this.grayscaleButton.Size = new System.Drawing.Size(231, 163);
+            this.grayscaleButton.TabIndex = 6;
+            this.grayscaleButton.Text = "Grayscale";
+            this.grayscaleButton.UseVisualStyleBackColor = true;
+            this.grayscaleButton.Click += new System.EventHandler(this.GrayscaleButton_Click);
             // 
             // tableLayoutPanel18
             // 
@@ -469,20 +610,20 @@
             this.tableLayoutPanel18.Controls.Add(this.inspectSharpenButton, 1, 1);
             this.tableLayoutPanel18.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(477, 134);
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(477, 153);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 2;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(231, 125);
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(231, 144);
             this.tableLayoutPanel18.TabIndex = 13;
             // 
             // sharpenButton
             // 
             this.sharpenButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sharpenButton.Location = new System.Drawing.Point(3, 65);
+            this.sharpenButton.Location = new System.Drawing.Point(3, 75);
             this.sharpenButton.Name = "sharpenButton";
-            this.sharpenButton.Size = new System.Drawing.Size(109, 57);
+            this.sharpenButton.Size = new System.Drawing.Size(109, 66);
             this.sharpenButton.TabIndex = 0;
             this.sharpenButton.Text = "Apply";
             this.sharpenButton.UseVisualStyleBackColor = true;
@@ -491,9 +632,9 @@
             // inspectSharpenButton
             // 
             this.inspectSharpenButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inspectSharpenButton.Location = new System.Drawing.Point(118, 65);
+            this.inspectSharpenButton.Location = new System.Drawing.Point(118, 75);
             this.inspectSharpenButton.Name = "inspectSharpenButton";
-            this.inspectSharpenButton.Size = new System.Drawing.Size(110, 57);
+            this.inspectSharpenButton.Size = new System.Drawing.Size(110, 66);
             this.inspectSharpenButton.TabIndex = 1;
             this.inspectSharpenButton.Text = "Inspect";
             this.inspectSharpenButton.UseVisualStyleBackColor = true;
@@ -507,7 +648,7 @@
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.Location = new System.Drawing.Point(3, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(225, 62);
+            this.label12.Size = new System.Drawing.Size(225, 72);
             this.label12.TabIndex = 2;
             this.label12.Text = "Sharpen";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -521,20 +662,20 @@
             this.tableLayoutPanel17.Controls.Add(this.inspectGaussianSmoothingButton, 1, 1);
             this.tableLayoutPanel17.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(240, 134);
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(240, 153);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 2;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(231, 125);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(231, 144);
             this.tableLayoutPanel17.TabIndex = 12;
             // 
             // gaussianSmoothingButton
             // 
             this.gaussianSmoothingButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gaussianSmoothingButton.Location = new System.Drawing.Point(3, 65);
+            this.gaussianSmoothingButton.Location = new System.Drawing.Point(3, 75);
             this.gaussianSmoothingButton.Name = "gaussianSmoothingButton";
-            this.gaussianSmoothingButton.Size = new System.Drawing.Size(109, 57);
+            this.gaussianSmoothingButton.Size = new System.Drawing.Size(109, 66);
             this.gaussianSmoothingButton.TabIndex = 0;
             this.gaussianSmoothingButton.Text = "Apply";
             this.gaussianSmoothingButton.UseVisualStyleBackColor = true;
@@ -543,9 +684,9 @@
             // inspectGaussianSmoothingButton
             // 
             this.inspectGaussianSmoothingButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inspectGaussianSmoothingButton.Location = new System.Drawing.Point(118, 65);
+            this.inspectGaussianSmoothingButton.Location = new System.Drawing.Point(118, 75);
             this.inspectGaussianSmoothingButton.Name = "inspectGaussianSmoothingButton";
-            this.inspectGaussianSmoothingButton.Size = new System.Drawing.Size(110, 57);
+            this.inspectGaussianSmoothingButton.Size = new System.Drawing.Size(110, 66);
             this.inspectGaussianSmoothingButton.TabIndex = 1;
             this.inspectGaussianSmoothingButton.Text = "Inspect";
             this.inspectGaussianSmoothingButton.UseVisualStyleBackColor = true;
@@ -559,33 +700,34 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(3, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(225, 62);
+            this.label11.Size = new System.Drawing.Size(225, 72);
             this.label11.TabIndex = 2;
             this.label11.Text = "Gaussian smoothing";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.tableLayoutPanel6.Controls.Add(this.gammaSlider, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.button3, 0, 2);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(714, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(229, 114);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(231, 144);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // gammaSlider
             // 
             this.gammaSlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gammaSlider.Location = new System.Drawing.Point(3, 25);
+            this.gammaSlider.Location = new System.Drawing.Point(3, 31);
             this.gammaSlider.Maximum = 200;
             this.gammaSlider.Name = "gammaSlider";
-            this.gammaSlider.Size = new System.Drawing.Size(223, 39);
+            this.gammaSlider.Size = new System.Drawing.Size(225, 51);
             this.gammaSlider.TabIndex = 0;
             this.gammaSlider.Value = 100;
             this.gammaSlider.ValueChanged += new System.EventHandler(this.GammaSlider_ValueChanged);
@@ -596,7 +738,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(223, 22);
+            this.label3.Size = new System.Drawing.Size(225, 28);
             this.label3.TabIndex = 1;
             this.label3.Text = "Gamma correction";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -604,9 +746,9 @@
             // button3
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(3, 70);
+            this.button3.Location = new System.Drawing.Point(3, 88);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(223, 41);
+            this.button3.Size = new System.Drawing.Size(225, 53);
             this.button3.TabIndex = 3;
             this.button3.Text = "Apply";
             this.button3.UseVisualStyleBackColor = true;
@@ -617,7 +759,7 @@
             this.inversionButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inversionButton.Location = new System.Drawing.Point(3, 3);
             this.inversionButton.Name = "inversionButton";
-            this.inversionButton.Size = new System.Drawing.Size(231, 125);
+            this.inversionButton.Size = new System.Drawing.Size(231, 144);
             this.inversionButton.TabIndex = 0;
             this.inversionButton.Text = "Inversion";
             this.inversionButton.UseVisualStyleBackColor = true;
@@ -625,27 +767,28 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.tableLayoutPanel4.Controls.Add(this.brightnessSlider, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.brightnessLabel, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.button1, 0, 2);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(240, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(229, 114);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(231, 144);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // brightnessSlider
             // 
             this.brightnessSlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.brightnessSlider.Location = new System.Drawing.Point(3, 25);
+            this.brightnessSlider.Location = new System.Drawing.Point(3, 31);
             this.brightnessSlider.Maximum = 128;
             this.brightnessSlider.Minimum = -128;
             this.brightnessSlider.Name = "brightnessSlider";
-            this.brightnessSlider.Size = new System.Drawing.Size(223, 39);
+            this.brightnessSlider.Size = new System.Drawing.Size(225, 51);
             this.brightnessSlider.TabIndex = 0;
             this.brightnessSlider.ValueChanged += new System.EventHandler(this.BrightnessSlider_ValueChanged);
             // 
@@ -655,7 +798,7 @@
             this.brightnessLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.brightnessLabel.Location = new System.Drawing.Point(3, 0);
             this.brightnessLabel.Name = "brightnessLabel";
-            this.brightnessLabel.Size = new System.Drawing.Size(223, 22);
+            this.brightnessLabel.Size = new System.Drawing.Size(225, 28);
             this.brightnessLabel.TabIndex = 1;
             this.brightnessLabel.Text = "Brightness correction";
             this.brightnessLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -663,9 +806,9 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(3, 70);
+            this.button1.Location = new System.Drawing.Point(3, 88);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(223, 41);
+            this.button1.Size = new System.Drawing.Size(225, 53);
             this.button1.TabIndex = 3;
             this.button1.Text = "Apply";
             this.button1.UseVisualStyleBackColor = true;
@@ -673,10 +816,11 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.tableLayoutPanel3.Controls.Add(this.contrastSlider, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.button2, 0, 2);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(477, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
@@ -684,16 +828,16 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(229, 114);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(231, 144);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // contrastSlider
             // 
             this.contrastSlider.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contrastSlider.Location = new System.Drawing.Point(3, 25);
+            this.contrastSlider.Location = new System.Drawing.Point(3, 31);
             this.contrastSlider.Maximum = 200;
             this.contrastSlider.Name = "contrastSlider";
-            this.contrastSlider.Size = new System.Drawing.Size(223, 39);
+            this.contrastSlider.Size = new System.Drawing.Size(225, 51);
             this.contrastSlider.TabIndex = 0;
             this.contrastSlider.Value = 100;
             this.contrastSlider.ValueChanged += new System.EventHandler(this.ContrastSlider_ValueChanged);
@@ -704,7 +848,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 22);
+            this.label1.Size = new System.Drawing.Size(225, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "Contrast correction";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -712,9 +856,9 @@
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(3, 70);
+            this.button2.Location = new System.Drawing.Point(3, 88);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(223, 41);
+            this.button2.Size = new System.Drawing.Size(225, 53);
             this.button2.TabIndex = 3;
             this.button2.Text = "Apply";
             this.button2.UseVisualStyleBackColor = true;
@@ -729,21 +873,21 @@
             this.tableLayoutPanel12.Controls.Add(this.inspectBlurButton, 1, 1);
             this.tableLayoutPanel12.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 134);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 153);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 2;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(231, 125);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(231, 144);
             this.tableLayoutPanel12.TabIndex = 10;
             // 
             // blurButton
             // 
             this.blurButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blurButton.Location = new System.Drawing.Point(3, 65);
+            this.blurButton.Location = new System.Drawing.Point(3, 75);
             this.blurButton.Name = "blurButton";
-            this.blurButton.Size = new System.Drawing.Size(109, 57);
+            this.blurButton.Size = new System.Drawing.Size(109, 66);
             this.blurButton.TabIndex = 0;
             this.blurButton.Text = "Apply";
             this.blurButton.UseVisualStyleBackColor = true;
@@ -752,9 +896,9 @@
             // inspectBlurButton
             // 
             this.inspectBlurButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inspectBlurButton.Location = new System.Drawing.Point(118, 65);
+            this.inspectBlurButton.Location = new System.Drawing.Point(118, 75);
             this.inspectBlurButton.Name = "inspectBlurButton";
-            this.inspectBlurButton.Size = new System.Drawing.Size(110, 57);
+            this.inspectBlurButton.Size = new System.Drawing.Size(110, 66);
             this.inspectBlurButton.TabIndex = 1;
             this.inspectBlurButton.Text = "Inspect";
             this.inspectBlurButton.UseVisualStyleBackColor = true;
@@ -768,7 +912,7 @@
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(225, 62);
+            this.label9.Size = new System.Drawing.Size(225, 72);
             this.label9.TabIndex = 2;
             this.label9.Text = "Blur";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -778,20 +922,33 @@
             this.bidirectionalEdgeDetectionButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bidirectionalEdgeDetectionButton.Location = new System.Drawing.Point(951, 3);
             this.bidirectionalEdgeDetectionButton.Name = "bidirectionalEdgeDetectionButton";
-            this.bidirectionalEdgeDetectionButton.Size = new System.Drawing.Size(234, 125);
+            this.bidirectionalEdgeDetectionButton.Size = new System.Drawing.Size(234, 144);
             this.bidirectionalEdgeDetectionButton.TabIndex = 16;
             this.bidirectionalEdgeDetectionButton.Text = "Bidirectional edge detection";
             this.bidirectionalEdgeDetectionButton.UseVisualStyleBackColor = true;
-            this.bidirectionalEdgeDetectionButton.Click += new System.EventHandler(this.bidirectionalEdgeDetectionButton_Click);
+            this.bidirectionalEdgeDetectionButton.Click += new System.EventHandler(this.BidirectionalEdgeDetectionButton_Click);
+            // 
+            // groupBox1
+            // 
+            this.editingControlsTable.SetColumnSpan(this.groupBox1, 2);
+            this.groupBox1.Controls.Add(this.customFilters);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 303);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(468, 163);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "custom filters";
             // 
             // customFilters
             // 
+            this.customFilters.AutoScroll = true;
             this.customFilters.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customFilters.Enabled = false;
-            this.customFilters.Location = new System.Drawing.Point(3, 771);
+            this.customFilters.Location = new System.Drawing.Point(3, 23);
             this.customFilters.Name = "customFilters";
-            this.customFilters.Size = new System.Drawing.Size(1188, 173);
-            this.customFilters.TabIndex = 2;
+            this.customFilters.Size = new System.Drawing.Size(462, 137);
+            this.customFilters.TabIndex = 18;
             // 
             // panel2
             // 
@@ -804,7 +961,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(1203, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(376, 947);
+            this.panel2.Size = new System.Drawing.Size(376, 975);
             this.panel2.TabIndex = 1;
             // 
             // filterInformationNewButton
@@ -1230,25 +1387,44 @@
             this.button13.Text = "Inspect";
             this.button13.UseVisualStyleBackColor = true;
             // 
+            // toggleSizeMode
+            // 
+            this.toggleSizeMode.Location = new System.Drawing.Point(24, 139);
+            this.toggleSizeMode.Name = "toggleSizeMode";
+            this.toggleSizeMode.Size = new System.Drawing.Size(145, 29);
+            this.toggleSizeMode.TabIndex = 7;
+            this.toggleSizeMode.Text = "Toggle SizeMode";
+            this.toggleSizeMode.UseVisualStyleBackColor = true;
+            this.toggleSizeMode.Click += new System.EventHandler(this.toggleSizeMode_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1582, 953);
+            this.ClientSize = new System.Drawing.Size(1582, 981);
             this.Controls.Add(this.mainTableLayoutPanel);
-            this.MaximumSize = new System.Drawing.Size(1600, 1000);
-            this.MinimumSize = new System.Drawing.Size(1600, 1000);
+            this.MaximumSize = new System.Drawing.Size(1600, 1028);
+            this.MinimumSize = new System.Drawing.Size(1600, 1028);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.inputImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outputImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayedImage)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.editingControlsTable.ResumeLayout(false);
+            this.tableLayoutPanel21.ResumeLayout(false);
+            this.tableLayoutPanel21.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.octreeColorQuantizationInput)).EndInit();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringInput)).EndInit();
             this.tableLayoutPanel20.ResumeLayout(false);
             this.tableLayoutPanel20.PerformLayout();
             this.tableLayoutPanel19.ResumeLayout(false);
@@ -1268,6 +1444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.contrastSlider)).EndInit();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.filterInformationTable.ResumeLayout(false);
@@ -1295,34 +1472,9 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.PictureBox inputImage;
-        private System.Windows.Forms.PictureBox outputImage;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button saveImageButton;
-        private System.Windows.Forms.Button loadImageButton;
-        private System.Windows.Forms.TableLayoutPanel editingControlsTable;
-        private System.Windows.Forms.Button inversionButton;
-        private System.Windows.Forms.TrackBar brightnessSlider;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label brightnessLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.TrackBar gammaSlider;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TrackBar contrastSlider;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button undoButton;
-        private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView filterInformationMatrix;
         private System.Windows.Forms.Label filterInformationLabel;
@@ -1348,8 +1500,21 @@
         private System.Windows.Forms.Button autocomputeDivisorButton;
         private System.Windows.Forms.TextBox filterNameInput;
         private System.Windows.Forms.Button filterInformationSaveButton;
-        private System.Windows.Forms.FlowLayoutPanel customFilters;
         private System.Windows.Forms.Button filterInformationNewButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button grayscaleButton;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TableLayoutPanel editingControlsTable;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
         private System.Windows.Forms.Button embossButton;
         private System.Windows.Forms.Button inspectEmbossButton;
@@ -1366,22 +1531,44 @@
         private System.Windows.Forms.Button gaussianSmoothingButton;
         private System.Windows.Forms.Button inspectGaussianSmoothingButton;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TrackBar gammaSlider;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button inversionButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TrackBar brightnessSlider;
+        private System.Windows.Forms.Label brightnessLabel;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TrackBar contrastSlider;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Button blurButton;
         private System.Windows.Forms.Button inspectBlurButton;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button bidirectionalEdgeDetectionButton;
-        private System.Windows.Forms.Button octreeColorQuantizationButton;
-        private System.Windows.Forms.Button randomDitheringButton;
-        private System.Windows.Forms.Button grayscaleButton;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.FlowLayoutPanel customFilters;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.NumericUpDown octreeColorQuantizationInput;
+        private System.Windows.Forms.NumericUpDown randomDitheringInput;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button undoButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button saveImageButton;
+        private System.Windows.Forms.Button loadImageButton;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox displayedImage;
+        private System.Windows.Forms.Button switchViewButton;
+        private System.Windows.Forms.Button toggleSizeMode;
     }
 }

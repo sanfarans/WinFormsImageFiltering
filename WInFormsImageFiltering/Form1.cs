@@ -14,6 +14,7 @@ namespace WInFormsImageFiltering
     {
         private string? loadedFileName = null;
 
+        private Bitmap? inputBitmap;
         private Bitmap? outputBitmap;
         private Bitmap? preview;
         private Bitmap? previous;
@@ -29,6 +30,10 @@ namespace WInFormsImageFiltering
 
         private Random random = new Random();
 
+        private bool showInitial = false;
+
+        private PictureBoxSizeMode displayImageSizeMode = PictureBoxSizeMode.AutoSize;
+
         public Form1()
         {
             InitializeComponent();
@@ -43,12 +48,13 @@ namespace WInFormsImageFiltering
             {
                 loadedFileName = openFileDialog.FileName;
                 Bitmap image = new Bitmap(loadedFileName);
-                inputImage.Image = image;
-                outputImage.Image = image;
+                inputBitmap = image;
+                displayedImage.Image = image;
                 outputBitmap = new Bitmap(loadedFileName);
                 preview = new Bitmap(loadedFileName);
                 resetButton.Enabled = true;
                 undoButton.Enabled = false;
+                switchViewButton.Enabled = true;
             }
             editingControlsTable.Enabled = true;
             customFilters.Enabled = true;
@@ -85,7 +91,7 @@ namespace WInFormsImageFiltering
                         MessageBox.Show("Unsupported file format.");
                         return;
                 }
-                outputImage.Image.Save(fileName, format);
+                displayedImage.Image.Save(fileName, format);
             }
         }
 
@@ -108,9 +114,9 @@ namespace WInFormsImageFiltering
             if (outputBitmap != null)
                 previous = (Bitmap)outputBitmap.Clone();
             else
-                previous = (Bitmap)inputImage.Image.Clone();
+                previous = (Bitmap)inputBitmap.Clone();
             outputBitmap = (Bitmap)preview.Clone();
-            outputImage.Image = outputBitmap;
+            displayedImage.Image = outputBitmap;
             undoButton.Enabled = true;
             ResetSliders();
         }
@@ -125,15 +131,38 @@ namespace WInFormsImageFiltering
             {
                 outputBitmap = (Bitmap)previous.Clone();
                 preview = (Bitmap)previous.Clone();
-                outputImage.Image = outputBitmap;
+                displayedImage.Image = outputBitmap;
             }
             undoButton.Enabled = false;
         }
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            outputBitmap = (Bitmap)inputImage.Image.Clone();
-            preview = (Bitmap)inputImage.Image.Clone();
-            outputImage.Image = outputBitmap;
+            if (inputBitmap == null)
+                return;
+            outputBitmap = (Bitmap)inputBitmap.Clone();
+            preview = (Bitmap)inputBitmap.Clone();
+            displayedImage.Image = outputBitmap;
+        }
+
+        private void switchViewButton_Click(object sender, EventArgs e)
+        {
+            showInitial = !showInitial;
+            if (showInitial)
+                displayedImage.Image = inputBitmap;
+            else
+                displayedImage.Image = outputBitmap;
+        }
+
+        private void toggleSizeMode_Click(object sender, EventArgs e)
+        {
+            if (displayImageSizeMode == PictureBoxSizeMode.AutoSize)
+            {
+                displayImageSizeMode = PictureBoxSizeMode.Zoom;
+            } else
+            {
+                displayImageSizeMode = PictureBoxSizeMode.AutoSize;
+            }
+            displayedImage.SizeMode = displayImageSizeMode;
         }
 
 
@@ -155,7 +184,7 @@ namespace WInFormsImageFiltering
                  }
                  progressBar.Value++;
              }
-            outputImage.Image = preview;
+            displayedImage.Image = preview;
         }
 
         // Inversion
@@ -365,7 +394,7 @@ namespace WInFormsImageFiltering
                 }
                 progressBar.Value++;
             }
-            outputImage.Image = preview;
+            displayedImage.Image = preview;
         }
 
         private void DisplayConvolutionFilterInfo(ConvolutionFilter? cf)
@@ -738,7 +767,7 @@ namespace WInFormsImageFiltering
             ApplyChanges();
         }
 
-        private void bidirectionalEdgeDetectionButton_Click(object sender, EventArgs e)
+        private void BidirectionalEdgeDetectionButton_Click(object sender, EventArgs e)
         {
             ApplyBiderectionalEdgeDetection();
         }
@@ -766,16 +795,10 @@ namespace WInFormsImageFiltering
             ApplyChanges();
         }
 
-        private Color RandomDithering(Color colorIn, int K = 4)
+        private Color RandomDithering(Color colorIn, int K)
         {
-            Color[] colors = new Color[4]
-            {
-                Color.Black,
-                Color.DarkGray,
-                Color.LightGray,
-                Color.White
-            };
-
+            if (K <= 1)
+                return Color.Black;
             int factor = 256 / K;
             int grayscale = RgbToGreyscale(colorIn);
 
@@ -783,27 +806,30 @@ namespace WInFormsImageFiltering
             quantized = Math.Clamp(quantized, 0, 255);
 
             int index = quantized / factor;
+            int greyValue = index / (K-1) * 255;
             
             Color colorOut = Color.FromArgb(
                 colorIn.A,
-                quantized,
-                quantized,
-                quantized
+                greyValue,
+                greyValue,
+                greyValue
             );
-            return colors[index];
+            return colorOut;
         }
 
-        private void randomDitheringButton_Click(object sender, EventArgs e)
+        private void RandomDitheringButton_Click(object sender, EventArgs e)
         {
-            ApplyFunctionalFilter((Color) => RandomDithering(Color));
+            int K = (int)randomDitheringInput.Value;   
+            ApplyFunctionalFilter((Color) => RandomDithering(Color, K));
             ApplyChanges();
         }
 
-        private void octreeColorQuantizationButton_Click(object sender, EventArgs e)
+        private void OctreeColorQuantizationButton_Click(object sender, EventArgs e)
         {
             if (outputBitmap == null)
                 return;
-            Octree octree = new(outputBitmap, 100);
+            int K = (int)octreeColorQuantizationInput.Value;
+            Octree octree = new(outputBitmap, K);
             ApplyFunctionalFilter(octree.Find);
             ApplyChanges();
         }
