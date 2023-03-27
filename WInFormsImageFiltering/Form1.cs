@@ -798,5 +798,14 @@ namespace WInFormsImageFiltering
             ApplyFunctionalFilter((Color) => RandomDithering(Color));
             ApplyChanges();
         }
+
+        private void octreeColorQuantizationButton_Click(object sender, EventArgs e)
+        {
+            if (outputBitmap == null)
+                return;
+            Octree octree = new(outputBitmap, 100);
+            ApplyFunctionalFilter(octree.Find);
+            ApplyChanges();
+        }
     }
 }

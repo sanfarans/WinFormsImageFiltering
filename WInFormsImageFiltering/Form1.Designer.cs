@@ -247,6 +247,7 @@
             this.octreeColorQuantizationButton.TabIndex = 8;
             this.octreeColorQuantizationButton.Text = "Octree Color Quantization";
             this.octreeColorQuantizationButton.UseVisualStyleBackColor = true;
+            this.octreeColorQuantizationButton.Click += new System.EventHandler(this.octreeColorQuantizationButton_Click);
             // 
             // randomDitheringButton
             // 
