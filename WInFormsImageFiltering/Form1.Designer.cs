@@ -51,7 +51,18 @@
             this.octreeColorQuantizationInput = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
+            this.randomDitheringBInput = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.randomDitheringGInput = new System.Windows.Forms.NumericUpDown();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.randomDitheringRInput = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.randomDitheringGreyInput = new System.Windows.Forms.NumericUpDown();
+            this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
+            this.applyGreyRandomDithering = new System.Windows.Forms.Button();
+            this.applyRGBRandomDithering = new System.Windows.Forms.Button();
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
             this.embossButton = new System.Windows.Forms.Button();
             this.inspectEmbossButton = new System.Windows.Forms.Button();
@@ -127,7 +138,6 @@
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.randomDitheringInput = new System.Windows.Forms.NumericUpDown();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -139,6 +149,12 @@
             this.tableLayoutPanel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.octreeColorQuantizationInput)).BeginInit();
             this.tableLayoutPanel15.SuspendLayout();
+            this.tableLayoutPanel22.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringBInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringGInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringRInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringGreyInput)).BeginInit();
+            this.tableLayoutPanel23.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
@@ -164,7 +180,6 @@
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringInput)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -449,9 +464,9 @@
             // tableLayoutPanel15
             // 
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
-            this.tableLayoutPanel15.Controls.Add(this.randomDitheringInput, 0, 1);
             this.tableLayoutPanel15.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel15.Controls.Add(this.button4, 0, 2);
+            this.tableLayoutPanel15.Controls.Add(this.tableLayoutPanel22, 0, 1);
+            this.tableLayoutPanel15.Controls.Add(this.tableLayoutPanel23, 0, 2);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel15.Location = new System.Drawing.Point(714, 303);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
@@ -474,16 +489,184 @@
             this.label5.Text = "Random dithering";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button4
+            // tableLayoutPanel22
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(3, 100);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(225, 60);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Apply";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.RandomDitheringButton_Click);
+            this.tableLayoutPanel22.ColumnCount = 6;
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel22.Controls.Add(this.randomDitheringBInput, 5, 0);
+            this.tableLayoutPanel22.Controls.Add(this.label21, 4, 0);
+            this.tableLayoutPanel22.Controls.Add(this.randomDitheringGInput, 3, 0);
+            this.tableLayoutPanel22.Controls.Add(this.label20, 2, 0);
+            this.tableLayoutPanel22.Controls.Add(this.label19, 0, 0);
+            this.tableLayoutPanel22.Controls.Add(this.randomDitheringRInput, 1, 0);
+            this.tableLayoutPanel22.Controls.Add(this.label22, 1, 1);
+            this.tableLayoutPanel22.Controls.Add(this.randomDitheringGreyInput, 3, 1);
+            this.tableLayoutPanel22.Location = new System.Drawing.Point(3, 35);
+            this.tableLayoutPanel22.Name = "tableLayoutPanel22";
+            this.tableLayoutPanel22.RowCount = 2;
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(225, 59);
+            this.tableLayoutPanel22.TabIndex = 4;
+            // 
+            // randomDitheringBInput
+            // 
+            this.randomDitheringBInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.randomDitheringBInput.Location = new System.Drawing.Point(178, 3);
+            this.randomDitheringBInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomDitheringBInput.Name = "randomDitheringBInput";
+            this.randomDitheringBInput.Size = new System.Drawing.Size(44, 27);
+            this.randomDitheringBInput.TabIndex = 5;
+            this.randomDitheringBInput.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label21.Location = new System.Drawing.Point(153, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(19, 29);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "B";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // randomDitheringGInput
+            // 
+            this.randomDitheringGInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.randomDitheringGInput.Location = new System.Drawing.Point(103, 3);
+            this.randomDitheringGInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomDitheringGInput.Name = "randomDitheringGInput";
+            this.randomDitheringGInput.Size = new System.Drawing.Size(43, 27);
+            this.randomDitheringGInput.TabIndex = 3;
+            this.randomDitheringGInput.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label20.Location = new System.Drawing.Point(78, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(19, 29);
+            this.label20.TabIndex = 2;
+            this.label20.Text = "G";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Location = new System.Drawing.Point(3, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(19, 29);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "R";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // randomDitheringRInput
+            // 
+            this.randomDitheringRInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.randomDitheringRInput.Location = new System.Drawing.Point(28, 3);
+            this.randomDitheringRInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomDitheringRInput.Name = "randomDitheringRInput";
+            this.randomDitheringRInput.Size = new System.Drawing.Size(43, 27);
+            this.randomDitheringRInput.TabIndex = 1;
+            this.randomDitheringRInput.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.tableLayoutPanel22.SetColumnSpan(this.label22, 2);
+            this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label22.Location = new System.Drawing.Point(28, 29);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(69, 30);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "grey:";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // randomDitheringGreyInput
+            // 
+            this.tableLayoutPanel22.SetColumnSpan(this.randomDitheringGreyInput, 2);
+            this.randomDitheringGreyInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.randomDitheringGreyInput.Location = new System.Drawing.Point(103, 32);
+            this.randomDitheringGreyInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomDitheringGreyInput.Name = "randomDitheringGreyInput";
+            this.randomDitheringGreyInput.Size = new System.Drawing.Size(69, 27);
+            this.randomDitheringGreyInput.TabIndex = 7;
+            this.randomDitheringGreyInput.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // tableLayoutPanel23
+            // 
+            this.tableLayoutPanel23.ColumnCount = 2;
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.Controls.Add(this.applyGreyRandomDithering, 1, 0);
+            this.tableLayoutPanel23.Controls.Add(this.applyRGBRandomDithering, 0, 0);
+            this.tableLayoutPanel23.Location = new System.Drawing.Point(3, 100);
+            this.tableLayoutPanel23.Name = "tableLayoutPanel23";
+            this.tableLayoutPanel23.RowCount = 1;
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(225, 60);
+            this.tableLayoutPanel23.TabIndex = 5;
+            // 
+            // applyGreyRandomDithering
+            // 
+            this.applyGreyRandomDithering.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.applyGreyRandomDithering.Location = new System.Drawing.Point(115, 3);
+            this.applyGreyRandomDithering.Name = "applyGreyRandomDithering";
+            this.applyGreyRandomDithering.Size = new System.Drawing.Size(107, 54);
+            this.applyGreyRandomDithering.TabIndex = 1;
+            this.applyGreyRandomDithering.Text = "Apply grey";
+            this.applyGreyRandomDithering.UseVisualStyleBackColor = true;
+            this.applyGreyRandomDithering.Click += new System.EventHandler(this.ApplyGreyRandomDithering_Click);
+            // 
+            // applyRGBRandomDithering
+            // 
+            this.applyRGBRandomDithering.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.applyRGBRandomDithering.Location = new System.Drawing.Point(3, 3);
+            this.applyRGBRandomDithering.Name = "applyRGBRandomDithering";
+            this.applyRGBRandomDithering.Size = new System.Drawing.Size(106, 54);
+            this.applyRGBRandomDithering.TabIndex = 0;
+            this.applyRGBRandomDithering.Text = "Apply RGB";
+            this.applyRGBRandomDithering.UseVisualStyleBackColor = true;
+            this.applyRGBRandomDithering.Click += new System.EventHandler(this.ApplyRGBRandomDithering);
             // 
             // tableLayoutPanel20
             // 
@@ -1386,29 +1569,6 @@
             this.button13.Text = "Inspect";
             this.button13.UseVisualStyleBackColor = true;
             // 
-            // randomDitheringInput
-            // 
-            this.randomDitheringInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.randomDitheringInput.Location = new System.Drawing.Point(3, 51);
-            this.randomDitheringInput.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.randomDitheringInput.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.randomDitheringInput.Name = "randomDitheringInput";
-            this.randomDitheringInput.Size = new System.Drawing.Size(225, 27);
-            this.randomDitheringInput.TabIndex = 5;
-            this.randomDitheringInput.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1436,6 +1596,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.octreeColorQuantizationInput)).EndInit();
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel15.PerformLayout();
+            this.tableLayoutPanel22.ResumeLayout(false);
+            this.tableLayoutPanel22.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringBInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringGInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringRInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringGreyInput)).EndInit();
+            this.tableLayoutPanel23.ResumeLayout(false);
             this.tableLayoutPanel20.ResumeLayout(false);
             this.tableLayoutPanel20.PerformLayout();
             this.tableLayoutPanel19.ResumeLayout(false);
@@ -1476,7 +1643,6 @@
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel16.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringInput)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1568,7 +1734,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.NumericUpDown octreeColorQuantizationInput;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button resetButton;
@@ -1582,6 +1747,17 @@
         private System.Windows.Forms.Button switchViewButton;
         private System.Windows.Forms.Button toggleSizeMode;
         private System.Windows.Forms.Button loadColorWheel;
-        private System.Windows.Forms.NumericUpDown randomDitheringInput;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
+        private System.Windows.Forms.NumericUpDown randomDitheringBInput;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.NumericUpDown randomDitheringGInput;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown randomDitheringRInput;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.NumericUpDown randomDitheringGreyInput;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel23;
+        private System.Windows.Forms.Button applyGreyRandomDithering;
+        private System.Windows.Forms.Button applyRGBRandomDithering;
     }
 }

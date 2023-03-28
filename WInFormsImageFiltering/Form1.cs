@@ -800,32 +800,46 @@ namespace WInFormsImageFiltering
             ApplyChanges();
         }
 
-        private Color RandomDithering(Color colorIn, int K)
+        private int GetDitheredChannelValue(int value, int K)
         {
             if (K <= 1)
-                return Color.Black;
-            int factor = 256 / K;
-            int grayscale = RgbToGreyscale(colorIn);
-
-            int quantized = grayscale + (int)(256 * (random.NextDouble() - 0.5));
+                return 255;
+            int quantized = value + (int)(256 * (random.NextDouble() - 0.5));
             quantized = Math.Clamp(quantized, 0, 255);
 
-            int index = quantized / factor;
-            int greyValue = index / (K-1) * 255;
-            
-            Color colorOut = Color.FromArgb(
-                colorIn.A,
-                greyValue,
-                greyValue,
-                greyValue
-            );
+            int index = quantized / (256 / K);
+            int ditheredValue = index / (K - 1) * 255;
+
+            return ditheredValue;
+        }
+        private Color RGBRandomDithering(Color colorIn, int RK, int GK, int BK)
+        {
+            int R = GetDitheredChannelValue(colorIn.R, RK);
+            int G = GetDitheredChannelValue(colorIn.G, GK);
+            int B = GetDitheredChannelValue(colorIn.B, BK);
+
+            Color colorOut = Color.FromArgb(colorIn.A, R, G, B);
             return colorOut;
         }
-
-        private void RandomDitheringButton_Click(object sender, EventArgs e)
+        private void ApplyRGBRandomDithering(object sender, EventArgs e)
         {
-            int K = (int)randomDitheringInput.Value;   
-            ApplyFunctionalFilter((Color) => RandomDithering(Color, K));
+            int RK = (int)randomDitheringRInput.Value;
+            int GK = (int)randomDitheringGInput.Value;
+            int BK = (int)randomDitheringBInput.Value;
+            ApplyFunctionalFilter((Color) => RGBRandomDithering(Color, RK, GK, BK));
+            ApplyChanges();
+        }
+
+        private Color GreyRandomDithering(Color colorIn, int GreyK)
+        {
+            int grey = GetDitheredChannelValue(RgbToGreyscale(colorIn), GreyK);
+            Color colorOut = Color.FromArgb(colorIn.A, grey, grey, grey);
+            return colorOut;
+        }
+        private void ApplyGreyRandomDithering_Click(object sender, EventArgs e)
+        {
+            int GreyK = (int)randomDitheringGreyInput.Value;
+            ApplyFunctionalFilter((Color) => GreyRandomDithering(Color, GreyK));
             ApplyChanges();
         }
 
@@ -844,5 +858,6 @@ namespace WInFormsImageFiltering
             Bitmap colorWheel = ColorWheel.GenerateColorWheel();
             LoadImage(colorWheel);
         }
+
     }
 }
