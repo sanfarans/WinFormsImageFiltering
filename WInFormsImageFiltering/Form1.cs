@@ -40,6 +40,19 @@ namespace WInFormsImageFiltering
             DisplayConvolutionFilterInfo(null);
         }
 
+        private void LoadImage(Bitmap image)
+        {
+            displayedImage.Image = image;
+            inputBitmap = (Bitmap)image.Clone();
+            outputBitmap = (Bitmap)image.Clone();
+            preview = (Bitmap)image.Clone();
+            resetButton.Enabled = true;
+            undoButton.Enabled = false;
+            switchViewButton.Enabled = true;
+            editingControlsTable.Enabled = true;
+            customFilters.Enabled = true;
+        }
+
         private void LoadImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -48,16 +61,8 @@ namespace WInFormsImageFiltering
             {
                 loadedFileName = openFileDialog.FileName;
                 Bitmap image = new Bitmap(loadedFileName);
-                inputBitmap = image;
-                displayedImage.Image = image;
-                outputBitmap = new Bitmap(loadedFileName);
-                preview = new Bitmap(loadedFileName);
-                resetButton.Enabled = true;
-                undoButton.Enabled = false;
-                switchViewButton.Enabled = true;
+                LoadImage(image);
             }
-            editingControlsTable.Enabled = true;
-            customFilters.Enabled = true;
         }
 
         private void SaveImageButton_Click(object sender, EventArgs e)
@@ -832,6 +837,12 @@ namespace WInFormsImageFiltering
             Octree octree = new(outputBitmap, K);
             ApplyFunctionalFilter(octree.Find);
             ApplyChanges();
+        }
+
+        private void loadColorWheel_Click(object sender, EventArgs e)
+        {
+            Bitmap colorWheel = ColorWheel.GenerateColorWheel();
+            LoadImage(colorWheel);
         }
     }
 }

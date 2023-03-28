@@ -32,6 +32,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.loadColorWheel = new System.Windows.Forms.Button();
+            this.toggleSizeMode = new System.Windows.Forms.Button();
             this.switchViewButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.undoButton = new System.Windows.Forms.Button();
@@ -48,7 +50,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.octreeColorQuantizationInput = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.randomDitheringInput = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
@@ -126,7 +127,7 @@
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.toggleSizeMode = new System.Windows.Forms.Button();
+            this.randomDitheringInput = new System.Windows.Forms.NumericUpDown();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -138,7 +139,6 @@
             this.tableLayoutPanel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.octreeColorQuantizationInput)).BeginInit();
             this.tableLayoutPanel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringInput)).BeginInit();
             this.tableLayoutPanel20.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
@@ -164,6 +164,7 @@
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringInput)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
@@ -214,6 +215,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.loadColorWheel);
             this.panel1.Controls.Add(this.toggleSizeMode);
             this.panel1.Controls.Add(this.switchViewButton);
             this.panel1.Controls.Add(this.resetButton);
@@ -227,6 +229,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(194, 488);
             this.panel1.TabIndex = 3;
+            // 
+            // loadColorWheel
+            // 
+            this.loadColorWheel.Location = new System.Drawing.Point(24, 144);
+            this.loadColorWheel.Name = "loadColorWheel";
+            this.loadColorWheel.Size = new System.Drawing.Size(145, 29);
+            this.loadColorWheel.TabIndex = 8;
+            this.loadColorWheel.Text = "Load Color Wheel";
+            this.loadColorWheel.UseVisualStyleBackColor = true;
+            this.loadColorWheel.Click += new System.EventHandler(this.loadColorWheel_Click);
+            // 
+            // toggleSizeMode
+            // 
+            this.toggleSizeMode.Location = new System.Drawing.Point(24, 109);
+            this.toggleSizeMode.Name = "toggleSizeMode";
+            this.toggleSizeMode.Size = new System.Drawing.Size(145, 29);
+            this.toggleSizeMode.TabIndex = 7;
+            this.toggleSizeMode.Text = "Toggle SizeMode";
+            this.toggleSizeMode.UseVisualStyleBackColor = true;
+            this.toggleSizeMode.Click += new System.EventHandler(this.toggleSizeMode_Click);
             // 
             // switchViewButton
             // 
@@ -280,7 +302,7 @@
             // 
             // saveImageButton
             // 
-            this.saveImageButton.Location = new System.Drawing.Point(24, 104);
+            this.saveImageButton.Location = new System.Drawing.Point(24, 74);
             this.saveImageButton.Name = "saveImageButton";
             this.saveImageButton.Size = new System.Drawing.Size(145, 29);
             this.saveImageButton.TabIndex = 1;
@@ -290,7 +312,7 @@
             // 
             // loadImageButton
             // 
-            this.loadImageButton.Location = new System.Drawing.Point(24, 69);
+            this.loadImageButton.Location = new System.Drawing.Point(24, 39);
             this.loadImageButton.Name = "loadImageButton";
             this.loadImageButton.Size = new System.Drawing.Size(145, 29);
             this.loadImageButton.TabIndex = 0;
@@ -440,29 +462,6 @@
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel15.Size = new System.Drawing.Size(231, 163);
             this.tableLayoutPanel15.TabIndex = 18;
-            // 
-            // randomDitheringInput
-            // 
-            this.randomDitheringInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.randomDitheringInput.Location = new System.Drawing.Point(3, 51);
-            this.randomDitheringInput.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.randomDitheringInput.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.randomDitheringInput.Name = "randomDitheringInput";
-            this.randomDitheringInput.Size = new System.Drawing.Size(225, 27);
-            this.randomDitheringInput.TabIndex = 5;
-            this.randomDitheringInput.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
             // 
             // label5
             // 
@@ -1387,15 +1386,28 @@
             this.button13.Text = "Inspect";
             this.button13.UseVisualStyleBackColor = true;
             // 
-            // toggleSizeMode
+            // randomDitheringInput
             // 
-            this.toggleSizeMode.Location = new System.Drawing.Point(24, 139);
-            this.toggleSizeMode.Name = "toggleSizeMode";
-            this.toggleSizeMode.Size = new System.Drawing.Size(145, 29);
-            this.toggleSizeMode.TabIndex = 7;
-            this.toggleSizeMode.Text = "Toggle SizeMode";
-            this.toggleSizeMode.UseVisualStyleBackColor = true;
-            this.toggleSizeMode.Click += new System.EventHandler(this.toggleSizeMode_Click);
+            this.randomDitheringInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.randomDitheringInput.Location = new System.Drawing.Point(3, 51);
+            this.randomDitheringInput.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.randomDitheringInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomDitheringInput.Name = "randomDitheringInput";
+            this.randomDitheringInput.Size = new System.Drawing.Size(225, 27);
+            this.randomDitheringInput.TabIndex = 5;
+            this.randomDitheringInput.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -1424,7 +1436,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.octreeColorQuantizationInput)).EndInit();
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringInput)).EndInit();
             this.tableLayoutPanel20.ResumeLayout(false);
             this.tableLayoutPanel20.PerformLayout();
             this.tableLayoutPanel19.ResumeLayout(false);
@@ -1465,6 +1476,7 @@
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel16.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.randomDitheringInput)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1558,7 +1570,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.NumericUpDown octreeColorQuantizationInput;
-        private System.Windows.Forms.NumericUpDown randomDitheringInput;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button undoButton;
@@ -1570,5 +1581,7 @@
         private System.Windows.Forms.PictureBox displayedImage;
         private System.Windows.Forms.Button switchViewButton;
         private System.Windows.Forms.Button toggleSizeMode;
+        private System.Windows.Forms.Button loadColorWheel;
+        private System.Windows.Forms.NumericUpDown randomDitheringInput;
     }
 }
